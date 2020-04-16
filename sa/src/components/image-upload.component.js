@@ -16,7 +16,14 @@ const FileUpload = () => {
     setFilename(e.target.files[0].name);
   };
 
-  const onSubmit = async e => {
+
+  const updateImageFileId=(e)=>{
+    e.preventDefault();
+    this.props.onChangeUploadFileId(e.props.state.fileId);
+  }
+
+
+  const handleUpload = async e => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
@@ -42,11 +49,11 @@ const FileUpload = () => {
 
       const { fileName, filePath } = res.data;
       setFileId(res.data);
+      updateImageFileId(this);
 
       setUploadedFile({ fileName, filePath });
 
       setMessage('File Uploaded ' + filename);
-      console.log(filePath);
 
     } catch (err) {
       if (err.response.status === 500) {
@@ -60,7 +67,7 @@ const FileUpload = () => {
   return (
     <Fragment>
       {message ? <Message msg={message} /> : null}
-      <form onSubmit={onSubmit}>
+
         <div className='custom-file mb-4'>
           <input
             type='file'
@@ -75,12 +82,10 @@ const FileUpload = () => {
 
         <Progress percentage={uploadPercentage} />
 
-        <input
-          type='submit'
-          value='Upload'
-          className='btn btn-primary btn-block mt-4'
-        />
-      </form>
+        <a href="#" className='btn btn-primary btn-block mt-4' onClick={handleUpload}>
+          Upload
+        </a>
+        
       {uploadedFile ? (
         <div className='row mt-5'>
           <div className='col-md-6 m-auto'>

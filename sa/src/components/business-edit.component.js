@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FileUpload from './image-upload.component';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -38,7 +39,10 @@ export default class BusinessEdit extends Component {
         this.onChangeLink2Url = this.onChangeLink2Url.bind(this);
         this.onChangeLink3Label = this.onChangeLink3Label.bind(this);
         this.onChangeLink3Url = this.onChangeLink3Url.bind(this);
+        this.onChangeUploadFileId = this.onChangeUploadFileId.bind(this);
+        this.onChangeUploadFileName = this.onChangeUploadFileName.bind(this);
 
+        this.handleUpload = this.handleUpload.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state= {
@@ -47,6 +51,8 @@ export default class BusinessEdit extends Component {
             password: '',
             pageId: '',
             businessName: '',
+            uploadFileId: '',
+            uploadFileName: '',
             addr1: '',
             addr2: '',
             city: '',
@@ -73,6 +79,7 @@ export default class BusinessEdit extends Component {
             link3Label: '',
             link3Url: '',
 
+            uploadFile: '',
             errorMessage: '',
         }
     }
@@ -90,6 +97,8 @@ export default class BusinessEdit extends Component {
                     password: response.data.password,
                     pageId: response.data.pageId,
                     businessName: response.data.info.name,
+                    uploadFileId: response.data.info.images.top,
+                    uploadFileName: '',
                     addr1: response.data.info.address.addr1,
                     addr2: response.data.info.address.addr2,
                     city: response.data.info.address.city,
@@ -157,6 +166,7 @@ export default class BusinessEdit extends Component {
     }
 
     onChangeAddr1(e) {
+        console.log(e.target.value);
         this.setState({
             addr1: e.target.value
         });
@@ -269,6 +279,7 @@ export default class BusinessEdit extends Component {
             deliveryText: e.target.value
         });
     }
+
     onChangeDeliveryUrl(e) {
         this.setState({
             deliveryUrl: e.target.value
@@ -302,11 +313,50 @@ export default class BusinessEdit extends Component {
             link3Label: e.target.value
         });
     }
+
     onChangeLink3Url(e) {
         this.setState({
             link3Url: e.target.value
         });
     }
+
+    onChangeUploadFileId(e) {
+        console.log(e.target.value);
+        this.setState({
+            uploadFileId: e.target.value
+        });
+    }
+
+
+    onChangeUploadFileName(e) {
+        console.log(e.target.value);
+        this.setState({
+            uploadFileName: e.target.files[0].name
+        });
+        this.setState({
+            uploadFile: e.target.files[0]
+        });
+    }
+
+    handleUpload (e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('file', this.state.uploadFile);
+
+        axios.post('http://localhost:5000/image/upload', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            },
+        })
+        .then(res=> {
+            this.setState({uploadFileId: res.data});
+        })
+        .catch((error) => {
+            console.log("ERR" + error.res.data);
+            this.setState({errorMessage : error.res.data});
+        });
+    
+    };
 
     onSubmit(e) {
         e.preventDefault();
@@ -319,17 +369,15 @@ export default class BusinessEdit extends Component {
             pageId: this.state.pageId,
             info: {
                 name: this.state.businessName,
-               // images: {
-               //    banner: { Buffer, contentType: String },
-               //     top: { Buffer, contentType: String },
-               //     bottom: { Buffer, contentType: String },
-               // },
+                images: {
+                    top: this.state.uploadFileId,
+                },
                 address: {
                     addr1: this.state.addr1,
                     addr2: this.state.addr2,
                     city: this.state.city,
                     state: this.state.state,
-                    zip: this.state.zie,
+                    zip: this.state.zip,
                 },
                 phone: this.state.phone,
                 email: this.state.email,
@@ -373,6 +421,7 @@ export default class BusinessEdit extends Component {
         axios.post('http://localhost:5000/business/update/' + this.state.id, business)
             .then(res=> {
                 console.log(res.data)
+                //this.setSetSate({uploadFileId : res.data})
             })
             .catch((error) => {
                 console.log("ERR" + error.response.data);
@@ -425,6 +474,30 @@ export default class BusinessEdit extends Component {
                         onChange={this.onChangePassword}
                         />
                 </div>
+
+                <div className='custom-file mb-4'>
+                    <input
+                        type='file'
+                        className='custom-file-input'
+                        id='customFile'
+                        onChange={this.onChangeUploadFileName}
+                    />
+                    <label className='custom-file-label' htmlFor='customFile'>
+                        {this.state.uploadFileName}
+                    </label>
+                </div>
+
+                <a href="#" className='btn btn-primary btn-block mt-4' onClick={this.handleUpload}>
+                    Upload
+                </a>
+                
+                {this.state.uploadFileId ? (
+                    <div className='row mt-5'>
+                        <div className='col-md-6 m-auto'>
+                            <img src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
+                        </div>
+                    </div>
+                )  : null } 
 
                 <div className="formGroup">
                     <label>Address: </label>

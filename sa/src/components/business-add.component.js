@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import axios from 'axios';
+import FileUpload from './image-upload.component';
 
 
 
@@ -36,6 +37,7 @@ export default class BusinessAdd extends Component {
         this.onChangeLink2Url = this.onChangeLink2Url.bind(this);
         this.onChangeLink3Label = this.onChangeLink3Label.bind(this);
         this.onChangeLink3Url = this.onChangeLink3Url.bind(this);
+        this.onChangeUploadFileId = this.onChangeUploadFileId.bind(this);
 
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -71,7 +73,9 @@ export default class BusinessAdd extends Component {
             link3Url: '',
 
             errorMessage: '',
+           
         }
+ 
     }
 
 
@@ -258,6 +262,11 @@ export default class BusinessAdd extends Component {
             link3Url: e.target.value
         });
     }
+    onChangeUploadFileId(e) {
+        this.setState({
+            uploadFileId: e.target.value
+        });
+    }
 
     onSubmit(e) {
         e.preventDefault();
@@ -269,17 +278,15 @@ export default class BusinessAdd extends Component {
             pageId: this.state.pageId,
             info: {
                 name: this.state.businessName,
-               // images: {
-               //    banner: { Buffer, contentType: String },
-               //     top: { Buffer, contentType: String },
-               //     bottom: { Buffer, contentType: String },
-               // },
+                images: {
+                   top: this.state.uploadFileId,
+                },
                 address: {
                     addr1: this.state.addr1,
                     addr2: this.state.addr2,
                     city: this.state.city,
                     state: this.state.state,
-                    zip: this.state.zie,
+                    zip: this.state.zip,
                 },
                 phone: this.state.phone,
                 email: this.state.email,
@@ -375,6 +382,8 @@ export default class BusinessAdd extends Component {
                         onChange={this.onChangePassword}
                         />
                 </div>
+
+                <FileUpload fileUpload={this.state.uploadFileId} />
 
                 <div className="formGroup">
                     <label>Address: </label>

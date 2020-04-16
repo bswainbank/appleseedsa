@@ -8,9 +8,7 @@ const businessSchema = new Schema({
     info: {
         name: { type: String, required: true },
         images: {
-            banner: { Buffer, contentType: String },
-            top: { Buffer, contentType: String },
-            bottom: { Buffer, contentType: String },
+            top: { type: String },
         },
         address: {
             addr1: { type: String },
