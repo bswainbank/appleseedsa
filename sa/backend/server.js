@@ -14,7 +14,12 @@ app.use(express.json());
 app.use(fileUpload());
 
 const uri = process.env.ATLAS_URI;
+console.log(uri);
 mongoose.connect(uri, { useNewUrlParser:true, useCreateIndex: true });
+// .catch(err => {
+//     console.error('App starting error:', err.stack);
+// });
+
 
 const connection = mongoose.connection;
 connection.once('open', () => {
