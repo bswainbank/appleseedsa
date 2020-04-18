@@ -15,18 +15,23 @@ export default class Home extends Component {
                     "Create and maintain a simple website for your business. This is a free service that allows you to share the critical information about how you are doing business today. Add changes and updates easily. Your Site Assistant is here to make it easy for you keep your customers up-to-date with the latest information about your business and how they can shop with you now.
                     </p>
 
-                    <h3>"It's free. It's easy. Create a site for your business today."</h3>
+                    <h5>"It's free. It's easy. Create a site for your business today."</h5>
                     <Link to="/add">
-                         <button className= "btn btn-outline-secondary" style={{padding:"5px 20px"}}>Register </button>
+                         <button className= "btn btn-primary btn-outline-secondary btnRegister">Register </button>
                     </Link>
 
+                    <h6 className = 'h6Message'>"Already a member? Login to update"</h6>
                     <BusinessLogin/>
                 </div>
 
-                <div className = 'clientsPanel'>
+                    <div className = 'clientsPanel'>
                     <h3>
                         Our Clients
                     </h3>
+
+                    <Link to="view/diversionspgports">
+                        Diversions
+                    </Link>
                 </div>
 
             </div>

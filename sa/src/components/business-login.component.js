@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './css/business-login.components.css';
+
 
 export default class BusinessLogin extends Component {
     constructor(props) {
@@ -58,23 +60,25 @@ export default class BusinessLogin extends Component {
     render() {
         return (
         <div>
-            <h3>Login</h3>
+            {/* <h4 className = 'lblLogin'>Login</h4> */}
             <form onSubmit={this.onSubmit}>
                 
                 <div className="formGroup">
-                    <label>Username: </label>
+                    {/* <label>Username: </label> */}
                     <input type ="text" 
                         className = "form-control"
                         value={this.state.username}
                         onChange={this.onChangeUsername}
+                        placeholder = 'Username'
                         />
                 </div>
                 <div className="formGroup">
-                    <label>Password: </label>
+                    {/* <label>Password: </label> */}
                     <input type ="text" 
                         className = "form-control"
                         value={this.state.password}
                         onChange={this.onChangePassword}
+                        placeholder = 'Password'
                         />
                 </div>
 

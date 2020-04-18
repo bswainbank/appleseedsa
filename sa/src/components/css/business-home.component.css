@@ -13,6 +13,20 @@
       overflow-y: hidden;
   }
 
+  .container{
+    font-family: 'Mukta', sans-serif;
+       height:100vh;
+       width: 100%;
+       max-width: 100%;
+      /* min-height:550px; */      
+      background-repeat: no-repeat;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      overflow-y: hidden;
+  }
+  
+  
   .login-reg-panel{
     position: relative;
     top: 50%;
@@ -46,4 +60,15 @@
 .businessDetail{
     margin: 20px;
     text-align: justify;
+}
+
+.btnRegister{
+    color: white ;
+    padding:"5px 10px";
+    margin:30px;
+}
+
+.h6Message{
+    text-align: left;
+    margin-left: 10px;
 }
