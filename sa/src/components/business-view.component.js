@@ -3,46 +3,86 @@ import axios from 'axios';
 
 const Business = props => (
        
-    <>
-        <div>{props.business.info.name}</div>
-  
-        <div>{props.business.info.topMessage}</div>
+    <div class = "container-md">
+        <div>
+            {props.business.info.images.top ? (
+                        <div className='row mt-5'>
+                            <div className='col-md-6 m-auto'>
+                                <img class="img-responsive" src={'http://localhost:5000/image/' + props.business.info.images.top} alt='' />
+                            </div>
+                        </div>
+            )  : null } 
+            <div><h1>{props.business.info.name}</h1></div>
+        </div>
+        <div><p class="lead">{props.business.info.topMessage}</p></div>
         
-        <div>{props.business.info.phone}</div>
-        <div>{props.business.info.email}</div>
+        {props.business.info.phone ? (
+            <div>Phone: {props.business.info.phone}</div>
+        ) : null}
 
-        <div>{props.business.info.hours.text}</div>
+        {props.business.info.email ? (
+            <div>Email: {props.business.info.email}</div>
+        ) : null}
 
-        <div>{props.business.info.address.addr1}</div>
-        <div>{props.business.info.address.addr2}</div>
-        <div>{props.business.info.address.city}</div>
-        <div>{props.business.info.address.state}</div>
-        <div>{props.business.info.address.zip}</div>
+        {props.business.info.hours.text ? (
+            <div>{props.business.info.hours.text}</div>
+        ) : null}
 
-        <div>{props.business.info.social.facebook}</div>
-        <div>{props.business.info.social.twitter}</div>
-        <div>{props.business.info.social.instagram}</div>
+        <div>
+            <address>
+                {props.business.info.address.addr1}<br></br>
+                {props.business.info.address.addr2}  
+                {props.business.info.address.addr2 ? (<br></br> ) : null}
+                {props.business.info.address.city}
+                {props.business.info.address.state}
+                {props.business.info.address.zip}
+            </address>
+        </div>
+
+        <div>
+            {props.business.info.social.facebook ? (
+                <div>Facebook: {props.business.info.social.facebook}</div>
+             ) : null}   
+            {props.business.info.social.twitter ? (
+                <div>Twitter: {props.business.info.social.twitter}</div>
+            ) : null}  
+            {props.business.info.social.instagram ? (
+                <div>Instagram: {props.business.info.social.instagram}</div>
+            ) : null}  
+        </div>
 
         <div>{props.business.info.onlineSales.text}</div>
-        <div>{props.business.info.onlineSales.url}</div>
+        {props.business.info.social.instagram ? (
+            <div>{props.business.info.onlineSales.url}</div>
+        ) : null }
 
         <div>{props.business.info.delivery.text}</div>
-        <div>{props.business.info.delivery.url}</div>
+        {props.business.info.delivery.url ? (
+            <div><a href={props.business.info.delivery.url}>Delivery</a></div>
+        ) : null }
 
         <div>{props.business.info.giftCard.text}</div>
-        <div>{props.business.info.giftCard.url}</div>
+        {props.business.info.giftCard.url ? (
+            <div><a href={props.business.info.giftCard.url}>Gift Cards</a></div>
+        ) : null }
 
         <div>{props.business.info.links.link1Label}</div>
-        <div>{props.business.info.links.link1Url}</div>
+        {props.business.info.links.link1Url ? (
+            <div><a href={props.business.info.links.link1Url}>{props.business.info.links.link1Url}</a></div>
+        ) : null }
 
         <div>{props.business.info.links.link2Label}</div>
-        <div>{props.business.info.links.link2Url}</div>
+        {props.business.info.links.link2Url ? (
+            <div><a href={props.business.info.links.link2Url}>{props.business.info.links.link2Url}</a></div>
+        ) : null }
 
         <div>{props.business.info.links.link3Label}</div>
-        <div>{props.business.info.links.link3Url}</div>
+        {props.business.info.links.link3Url ? (
+            <div><a href={props.business.info.links.link3Url}>{props.business.info.links.link3Url}</a></div>
+        ) : null }
 
-        <div>{props.business.info.bottomMessage}</div>
-    </>
+        <div><p>{props.business.info.bottomMessage}</p></div>
+    </div>
 )
 
 export default class BusinessView extends Component {
@@ -58,9 +98,7 @@ export default class BusinessView extends Component {
                 info: {
                     name: '',
                     images: {
-                        banner: '',
                         top: '',
-                        bottom: '',
                     },
                     address: {
                         addr1: '',
@@ -125,7 +163,6 @@ export default class BusinessView extends Component {
     render() {
         return (
             <div>
-                <p>View Business { this.props.match.params.pageId }</p>
                 <div>
                     {  this.showBusiness() }
                 </div>

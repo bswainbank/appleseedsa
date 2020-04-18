@@ -46,6 +46,7 @@ export default class BusinessAdd extends Component {
             password: '',
             pageId: '',
             businessName: '',
+            uploadFileId: '',
             addr1: '',
             addr2: '',
             city: '',
@@ -443,7 +444,7 @@ export default class BusinessAdd extends Component {
                 </div>
                 <div className="formGroup">
                     <label>Welcome Message: </label>
-                    <input type ="text" 
+                    <input type ="textarea" 
                         className = "form-control"
                         value={this.state.topMessage}
                         onChange={this.onChangeTopMessage}
@@ -459,7 +460,7 @@ export default class BusinessAdd extends Component {
                 </div>
                 <div className="formGroup">
                     <label>Hours: </label>
-                    <input type ="text" 
+                    <input type ="textarea" 
                         className = "form-control"
                         value={this.state.hoursText}
                         onChange={this.onChangeHoursText}

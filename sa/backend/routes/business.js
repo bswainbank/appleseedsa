@@ -76,6 +76,8 @@ router.route('/:pageId').get((req, res) => {
 
 router.route('/load/:pageId').get((req, res) => {
 
+    console.log("Loading: " +req.params.pageId );
+
     Business.findOne( { pageId : req.params.pageId})
         .then(  business => res.json(business) )
         .catch(err => res.status(400).json('Error: ' + err));

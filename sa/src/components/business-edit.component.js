@@ -4,7 +4,6 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 
-
 export default class BusinessEdit extends Component {
     constructor(props) {
         super(props);
@@ -557,7 +556,7 @@ export default class BusinessEdit extends Component {
                 </div>
                 <div className="formGroup">
                     <label>Welcome Message: </label>
-                    <input type ="text" 
+                    <input type ="textarea" 
                         className = "form-control"
                         value={this.state.topMessage}
                         onChange={this.onChangeTopMessage}
@@ -565,7 +564,7 @@ export default class BusinessEdit extends Component {
                 </div>
                 <div className="formGroup">
                     <label>Footer Message: </label>
-                    <input type ="text" 
+                    <input type ="textarea" 
                         className = "form-control"
                         value={this.state.bottomMessage}
                         onChange={this.onChangeBottomMessage}
@@ -573,7 +572,7 @@ export default class BusinessEdit extends Component {
                 </div>
                 <div className="formGroup">
                     <label>Hours: </label>
-                    <input type ="text" 
+                    <input type ="textarea" 
                         className = "form-control"
                         value={this.state.hoursText}
                         onChange={this.onChangeHoursText}
@@ -605,7 +604,7 @@ export default class BusinessEdit extends Component {
                 </div>
                 <div className="formGroup">
                     <label>Gift Card Text: </label>
-                    <input type ="text" 
+                    <input type ="textarea" 
                         className = "form-control"
                         value={this.state.giftText}
                         onChange={this.onChangeGiftText}
@@ -621,7 +620,7 @@ export default class BusinessEdit extends Component {
                 </div>
                 <div className="formGroup">
                     <label>Online Sales Text: </label>
-                    <input type ="text" 
+                    <input type ="textarea" 
                         className = "form-control"
                         value={this.state.onlineSalesText}
                         onChange={this.onChangeOnlineSalesText}
@@ -637,7 +636,7 @@ export default class BusinessEdit extends Component {
                 </div>
                 <div className="formGroup">
                     <label>Delivery Text: </label>
-                    <input type ="text" 
+                    <input type ="textarea" 
                         className = "form-control"
                         value={this.state.deliveryText}
                         onChange={this.onChangeDeliveryText}
