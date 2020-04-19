@@ -13,7 +13,7 @@ import ImageUpload from "./components/image-upload.component";
 function App() {
   return (
     <Router>
-    <div className="container">
+    <div className="container-fluid">
       <Route path="/view/:pageId" component= {BusinessView} />
       <Route path="/add" component= {BusinessAdd} />
       <Route path="/edit/:pageId" component= {BusinessEdit} />

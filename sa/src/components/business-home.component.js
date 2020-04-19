@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 export default class Home extends Component {
     render(){
         return(
-            <div className = "container-fluid">
+            <div className = "container-home">
                 <div className = 'login-reg-panel col-sm-12 col-md-12'>
                     <h2 className = 'heading-MS'>
                     Appleseed Initiative Site Assistant

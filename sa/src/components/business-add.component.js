@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import axios from 'axios';
 import FileUpload from './image-upload.component';
-
+import './css/business-add.components.css';
 
 
 export default class BusinessAdd extends Component {
@@ -341,8 +341,9 @@ export default class BusinessAdd extends Component {
 
     render() {
         return (
-        <div>
-            <h3>Create a new Business Page</h3>
+        <div className = 'container-add'>
+            <div className = 'container'>
+            <h3 className = 'addPageHeading'>Create a new Business Page</h3>
             
             { this.state.errorMessage &&
                     <h3 className="error"> { this.state.errorMessage } </h3> }
@@ -598,6 +599,7 @@ export default class BusinessAdd extends Component {
                 </div>
 
             </form>
+            </div>
         </div>
 
         ) 
