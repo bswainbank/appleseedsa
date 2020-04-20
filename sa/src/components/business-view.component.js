@@ -15,6 +15,10 @@ const Business = props => (
             <div><h1>{props.business.info.name}</h1></div>
         </div>
         <div><p class="lead">{props.business.info.topMessage}</p></div>
+
+        {props.business.info.website ? (
+            <div>Website: {props.business.info.website}</div>
+        ) : null}
         
         {props.business.info.phone ? (
             <div>Phone: {props.business.info.phone}</div>
@@ -82,6 +86,8 @@ const Business = props => (
         ) : null }
 
         <div><p>{props.business.info.bottomMessage}</p></div>
+
+        <div><p>Last Updated: {props.business.updatedAt}</p></div>
     </div>
 )
 

@@ -23,7 +23,7 @@ export default class Home extends Component {
                          <button className= "btn btn-primary btn-outline-secondary btnRegister">Add a Business</button>
                     </Link>
 
-                    <h6 className = 'h6Message'>Already a member? Login to update</h6>
+                    <h6 className = 'h6Message'>Already have a site? Login to update:</h6>
                     <BusinessLogin/>
                 </div>
 

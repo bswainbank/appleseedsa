@@ -10,6 +10,7 @@ const businessSchema = new Schema({
         images: {
             top: { type: String },
         },
+        website: { type: String },
         address: {
             addr1: { type: String },
             addr2: { type: String },

@@ -13,6 +13,7 @@ export default class BusinessEdit extends Component {
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onChangePageId = this.onChangePageId.bind(this);
         this.onChangeBusinessName = this.onChangeBusinessName.bind(this);
+        this.onChangeWebsite = this.onChangeWebsite.bind(this);
         this.onChangeAddr1 = this.onChangeAddr1.bind(this);
         this.onChangeAddr2 = this.onChangeAddr2.bind(this);
         this.onChangeCity = this.onChangeCity.bind(this);
@@ -50,6 +51,7 @@ export default class BusinessEdit extends Component {
             password: '',
             pageId: '',
             businessName: '',
+            website: '',
             uploadFileId: '',
             uploadFileName: '',
             addr1: '',
@@ -78,6 +80,7 @@ export default class BusinessEdit extends Component {
             link3Label: '',
             link3Url: '',
 
+            modifiedDate: '',
             uploadFile: '',
             errorMessage: '',
         }
@@ -96,6 +99,7 @@ export default class BusinessEdit extends Component {
                     password: response.data.password,
                     pageId: response.data.pageId,
                     businessName: response.data.info.name,
+                    website: response.data.info.website,
                     uploadFileId: response.data.info.images.top,
                     uploadFileName: '',
                     addr1: response.data.info.address.addr1,
@@ -123,6 +127,8 @@ export default class BusinessEdit extends Component {
                     link2Url: response.data.info.links.link2Url,
                     link3Label: response.data.info.links.link3Label,
                     link3Url: response.data.info.links.link3Url,
+
+                    modifiedDate: response.data.updatedAt
                }) 
 
 
@@ -161,6 +167,12 @@ export default class BusinessEdit extends Component {
     onChangeBusinessName(e) {
         this.setState({
             businessName: e.target.value
+        });
+    }
+
+    onChangeWebsite(e) {
+        this.setState({
+            website: e.target.value
         });
     }
 
@@ -368,6 +380,7 @@ export default class BusinessEdit extends Component {
             pageId: this.state.pageId,
             info: {
                 name: this.state.businessName,
+                website: this.state.website,
                 images: {
                     top: this.state.uploadFileId,
                 },
@@ -438,15 +451,7 @@ export default class BusinessEdit extends Component {
                     <h3 className="error"> { this.state.errorMessage } </h3> }
                     
             <form onSubmit={this.onSubmit}>
-                <div className="formGroup">
-                    <label>Business Name: </label>
-                    <input type ="text" 
-                        required
-                        className = "form-control"
-                        value={this.state.businessName}
-                        onChange={this.onChangeBusinessName}
-                        />
-                </div>
+                
                 <div className="formGroup">
                     <label>Page Id: </label>
                     <input type ="text" 
@@ -455,6 +460,15 @@ export default class BusinessEdit extends Component {
                         value={this.state.pageId}
                         onChange={this.onChangePageId}
                         />
+                </div>
+
+                <div>
+                    View and test your page:<br></br>
+                    <a href={"http://localhost:3000/view/" + this.state.pageId}>{"http://localhost:3000/view/" + this.state.pageId}</a>
+                </div>
+
+                <div>
+                    Last Updated: {this.state.modifiedDate}
                 </div>
 
                 <div className="formGroup">
@@ -497,6 +511,25 @@ export default class BusinessEdit extends Component {
                         </div>
                     </div>
                 )  : null } 
+
+                <div className="formGroup">
+                    <label>Business Name: </label>
+                    <input type ="text" 
+                        required
+                        className = "form-control"
+                        value={this.state.businessName}
+                        onChange={this.onChangeBusinessName}
+                        />
+                </div>
+
+                <div className="formGroup">
+                    <label>Website: </label>
+                    <input type ="text" 
+                        className = "form-control"
+                        value={this.state.website}
+                        onChange={this.onChangeWebsite}
+                        />
+                </div>
 
                 <div className="formGroup">
                     <label>Address: </label>

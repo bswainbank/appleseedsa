@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const storage = require('node-sessionstorage');
 let Business = require('../models/business.model');
 
 router.route('/').get((req, res) => {
@@ -14,7 +15,10 @@ router.route('/add').post((req, res) => {
     const newBusiness = new Business(req.body);
 
     newBusiness.save()
-        .then(business => res.json(newBusiness))
+        .then(business => {
+            storage.setItem("user", newBusiness.username);
+            res.json(newBusiness)
+        })
         .catch(err => res.status(400).json('Error: ' + err));
 
 });
@@ -34,6 +38,7 @@ router.route('/login').post((req, res) => {
                 login = false;
             }
             if(login==true) {
+                storage.setItem("user", username);
                 res.json(business.pageId);
             } else {
                res.status(401).json("Login Failed");
@@ -69,7 +74,12 @@ router.route('/:id').delete((req, res) => {
 router.route('/:pageId').get((req, res) => {
 
      Business.findOne( { pageId : req.params.pageId})
-        .then(  business => res.json(business) )
+        .then(  business => {
+            
+            business.username = ''
+            business.password = ''
+            res.json(business) 
+        })
         .catch(err => res.status(400).json('Error: ' + err));
 
 });
@@ -79,7 +89,18 @@ router.route('/load/:pageId').get((req, res) => {
     console.log("Loading: " +req.params.pageId );
 
     Business.findOne( { pageId : req.params.pageId})
-        .then(  business => res.json(business) )
+        .then(  business => {
+
+            const loggedInUser =  storage.getItem("user");  
+            console.log(loggedInUser);
+            console.log(business.username);
+            if(!(loggedInUser === business.username)) {
+                console.log("Login Failed");
+                err => res.status(403).json("Login required");
+            } else {
+                res.json(business) 
+            }
+        })
         .catch(err => res.status(400).json('Error: ' + err));
 
 });
