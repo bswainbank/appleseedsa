@@ -9,24 +9,27 @@ export default class Home extends Component {
             <div className = "container-home">
                 <div className = 'login-reg-panel col-sm-12 col-md-12'>
                     <h2 className = 'heading-MS'>
-                    Appleseed Initiative Site Assistant
+                    <p>Appleseed Initiative:<br></br>
+                        Site Assistant</p>
                     </h2>
                     <p className = 'businessDetail'>
-                    "Create and maintain a simple website for your business. This is a free service that allows you to share the critical information about how you are doing business today. Add changes and updates easily. Your Site Assistant is here to make it easy for you keep your customers up-to-date with the latest information about your business and how they can shop with you now.
+                    Create and maintain a simple website for your business. 
+                    Add changes and updates easily. This is a free service that helps you to 
+                    update your customers and let them know how you are doing business today. 
                     </p>
 
-                    <h5>"It's free. It's easy. Create a site for your business today."</h5>
+                    <h5>It's free. It's easy. Create a site for your business today.</h5>
                     <Link to="/add">
-                         <button className= "btn btn-primary btn-outline-secondary btnRegister">Register </button>
+                         <button className= "btn btn-primary btn-outline-secondary btnRegister">Add a Business</button>
                     </Link>
 
-                    <h6 className = 'h6Message'>"Already a member? Login to update"</h6>
+                    <h6 className = 'h6Message'>Already a member? Login to update</h6>
                     <BusinessLogin/>
                 </div>
 
                     <div className = 'clientsPanel'>
                     <h3>
-                        Our Clients
+                       Sample Sites
                     </h3>
 
                     <Link to="view/diversionspgports">
