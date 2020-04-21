@@ -1,12 +1,12 @@
 .container-view{
     /* max-width: max-content; */
     /* background-image: url('../images/annie-spratt-yI3weKNBRTc-unsplash.jpg');       */
-    background-color: white;
+    background-color: rgb(41, 39, 39);
     background-repeat: no-repeat;
     background-size:cover;      
     background-position:center;
     padding-top: 50px;
-    padding-bottom: 50px;    
+    padding-bottom: 50px;  
 }
 
 .container-md{
@@ -14,7 +14,8 @@
     border: #472511 solid 50px;
     border-image: url('../images/keith-misner-h0Vxgz5tyXA-unsplash.jpg');
     border-image-slice: 20;
- 
+    border-radius: 25px;
+    padding: 40px;
 }
 .h1BusinessName{
     text-align: center;

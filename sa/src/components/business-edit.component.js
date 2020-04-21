@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import FileUpload from './image-upload.component';
-import { Link, Redirect } from 'react-router-dom';
+import './css/business-edit.components.css';
 import axios from 'axios';
 
 
@@ -444,305 +443,307 @@ export default class BusinessEdit extends Component {
 
     render() {
         return (
-        <div>
-            <h3>Edit Page</h3>
+        <div className = 'container-edit'>
+            <div className = 'container'>
+                <h3>Edit Page</h3>
 
-            { this.state.errorMessage &&
+                { this.state.errorMessage &&
                     <h3 className="error"> { this.state.errorMessage } </h3> }
                     
-            <form onSubmit={this.onSubmit}>
-                
-                <div className="formGroup">
-                    <label>Page Id: </label>
-                    <input type ="text" 
-                        required
-                        className = "form-control"
-                        value={this.state.pageId}
-                        onChange={this.onChangePageId}
-                        />
-                </div>
-
-                <div>
-                    View and test your page:<br></br>
-                    <a href={"http://localhost:3000/view/" + this.state.pageId}>{"http://localhost:3000/view/" + this.state.pageId}</a>
-                </div>
-
-                <div>
-                    Last Updated: {this.state.modifiedDate}
-                </div>
-
-                <div className="formGroup">
-                    <label>Username: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.username}
-                        onChange={this.onChangeUsername}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Password: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.password}
-                        onChange={this.onChangePassword}
-                        />
-                </div>
-
-                <div className='custom-file mb-4'>
-                    <input
-                        type='file'
-                        className='custom-file-input'
-                        id='customFile'
-                        onChange={this.onChangeUploadFileName}
-                    />
-                    <label className='custom-file-label' htmlFor='customFile'>
-                        {this.state.uploadFileName}
-                    </label>
-                </div>
-
-                <a href="#" className='btn btn-primary btn-block mt-4' onClick={this.handleUpload}>
-                    Upload
-                </a>
-                
-                {this.state.uploadFileId ? (
-                    <div className='row mt-5'>
-                        <div className='col-md-6 m-auto'>
-                            <img src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
-                        </div>
+                <form onSubmit={this.onSubmit}>
+                    
+                    <div className="formGroup">
+                        <label>Page Id: </label>
+                        <input type ="text" 
+                            required
+                            className = "form-control"
+                            value={this.state.pageId}
+                            onChange={this.onChangePageId}
+                            />
                     </div>
-                )  : null } 
 
-                <div className="formGroup">
-                    <label>Business Name: </label>
-                    <input type ="text" 
-                        required
-                        className = "form-control"
-                        value={this.state.businessName}
-                        onChange={this.onChangeBusinessName}
-                        />
-                </div>
+                    <div>
+                        View and test your page:<br></br>
+                        <a href={"http://localhost:3000/view/" + this.state.pageId}>{"http://localhost:3000/view/" + this.state.pageId}</a>
+                    </div>
 
-                <div className="formGroup">
-                    <label>Website: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.website}
-                        onChange={this.onChangeWebsite}
-                        />
-                </div>
+                    <div>
+                        Last Updated: {this.state.modifiedDate}
+                    </div>
 
-                <div className="formGroup">
-                    <label>Address: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.addr1}
-                        onChange={this.onChangeAddr1}
+                    <div className="formGroup">
+                        <label>Username: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.username}
+                            onChange={this.onChangeUsername}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Password: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.password}
+                            onChange={this.onChangePassword}
+                            />
+                    </div>
+
+                    <div className='custom-file mb-4'>
+                        <input
+                            type='file'
+                            className='custom-file-input'
+                            id='customFile'
+                            onChange={this.onChangeUploadFileName}
                         />
-                </div>
-                <div className="formGroup">
-                    <label>Address 2: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.addr2}
-                        onChange={this.onChangeAddr2}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>City: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.city}
-                        onChange={this.onChangeCity}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>State: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.state}
-                        onChange={this.onChangeState}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Zip: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.zip}
-                        onChange={this.onChangeZip}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Phone: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.phone}
-                        onChange={this.onChangePhone}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Email: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.email}
-                        onChange={this.onChangeEmail}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Welcome Message: </label>
-                    <input type ="textarea" 
-                        className = "form-control"
-                        value={this.state.topMessage}
-                        onChange={this.onChangeTopMessage}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Footer Message: </label>
-                    <input type ="textarea" 
-                        className = "form-control"
-                        value={this.state.bottomMessage}
-                        onChange={this.onChangeBottomMessage}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Hours: </label>
-                    <input type ="textarea" 
-                        className = "form-control"
-                        value={this.state.hoursText}
-                        onChange={this.onChangeHoursText}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Facebook: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.facebook}
-                        onChange={this.onChangeFacebook}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Twitter: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.twitter}
-                        onChange={this.onChangeTwitter}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Instagram: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.instagram}
-                        onChange={this.onChangeInstagram}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Gift Card Text: </label>
-                    <input type ="textarea" 
-                        className = "form-control"
-                        value={this.state.giftText}
-                        onChange={this.onChangeGiftText}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Gift Card Url: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.giftUrl}
-                        onChange={this.onChangeGiftUrl}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Online Sales Text: </label>
-                    <input type ="textarea" 
-                        className = "form-control"
-                        value={this.state.onlineSalesText}
-                        onChange={this.onChangeOnlineSalesText}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Online Sales Url: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.onlineSalesUrl}
-                        onChange={this.onChangeOnlineSalesUrl}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Delivery Text: </label>
-                    <input type ="textarea" 
-                        className = "form-control"
-                        value={this.state.deliveryText}
-                        onChange={this.onChangeDeliveryText}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Delivery Url: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.deliveryUrl}
-                        onChange={this.onChangeDeliveryUrl}
-                        />
-                </div>
+                        <label className='custom-file-label' htmlFor='customFile'>
+                            {this.state.uploadFileName}
+                        </label>
+                    </div>
+
+                    <a href="#" className='btn btn-primary btn-block mt-4' onClick={this.handleUpload}>
+                        Upload
+                    </a>
+                    
+                    {this.state.uploadFileId ? (
+                        <div className='row mt-5'>
+                            <div className='col-md-6 m-auto'>
+                                <img src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
+                            </div>
+                        </div>
+                    )  : null } 
+
+                    <div className="formGroup">
+                        <label>Business Name: </label>
+                        <input type ="text" 
+                            required
+                            className = "form-control"
+                            value={this.state.businessName}
+                            onChange={this.onChangeBusinessName}
+                            />
+                    </div>
+
+                    <div className="formGroup">
+                        <label>Website: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.website}
+                            onChange={this.onChangeWebsite}
+                            />
+                    </div>
+
+                    <div className="formGroup">
+                        <label>Address: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.addr1}
+                            onChange={this.onChangeAddr1}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Address 2: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.addr2}
+                            onChange={this.onChangeAddr2}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>City: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.city}
+                            onChange={this.onChangeCity}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>State: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.state}
+                            onChange={this.onChangeState}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Zip: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.zip}
+                            onChange={this.onChangeZip}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Phone: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.phone}
+                            onChange={this.onChangePhone}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Email: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.email}
+                            onChange={this.onChangeEmail}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Welcome Message: </label>
+                        <input type ="textarea" 
+                            className = "form-control"
+                            value={this.state.topMessage}
+                            onChange={this.onChangeTopMessage}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Footer Message: </label>
+                        <input type ="textarea" 
+                            className = "form-control"
+                            value={this.state.bottomMessage}
+                            onChange={this.onChangeBottomMessage}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Hours: </label>
+                        <input type ="textarea" 
+                            className = "form-control"
+                            value={this.state.hoursText}
+                            onChange={this.onChangeHoursText}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Facebook: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.facebook}
+                            onChange={this.onChangeFacebook}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Twitter: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.twitter}
+                            onChange={this.onChangeTwitter}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Instagram: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.instagram}
+                            onChange={this.onChangeInstagram}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Gift Card Text: </label>
+                        <input type ="textarea" 
+                            className = "form-control"
+                            value={this.state.giftText}
+                            onChange={this.onChangeGiftText}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Gift Card Url: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.giftUrl}
+                            onChange={this.onChangeGiftUrl}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Online Sales Text: </label>
+                        <input type ="textarea" 
+                            className = "form-control"
+                            value={this.state.onlineSalesText}
+                            onChange={this.onChangeOnlineSalesText}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Online Sales Url: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.onlineSalesUrl}
+                            onChange={this.onChangeOnlineSalesUrl}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Delivery Text: </label>
+                        <input type ="textarea" 
+                            className = "form-control"
+                            value={this.state.deliveryText}
+                            onChange={this.onChangeDeliveryText}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Delivery Url: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.deliveryUrl}
+                            onChange={this.onChangeDeliveryUrl}
+                            />
+                    </div>
 
 
-                <div className="formGroup">
-                    <label>Link 1 Label: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.link1Label}
-                        onChange={this.onChangeLink1Label}
-                        />
-                </div>
+                    <div className="formGroup">
+                        <label>Link 1 Label: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.link1Label}
+                            onChange={this.onChangeLink1Label}
+                            />
+                    </div>
 
-                <div className="formGroup">
-                    <label>Link 1 Url: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.link1Url}
-                        onChange={this.onChangeLink1Url}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Link 2 Label: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.link2Label}
-                        onChange={this.onChangeLink2Label}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Link 2 Url: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.link2Url}
-                        onChange={this.onChangeLink2Url}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Link 3 Label: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.link3Label}
-                        onChange={this.onChangeLink3Label}
-                        />
-                </div>
-                <div className="formGroup">
-                    <label>Link 3 Url: </label>
-                    <input type ="text" 
-                        className = "form-control"
-                        value={this.state.link3Url}
-                        onChange={this.onChangeLink3Url}
-                        />
-                </div>
+                    <div className="formGroup">
+                        <label>Link 1 Url: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.link1Url}
+                            onChange={this.onChangeLink1Url}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Link 2 Label: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.link2Label}
+                            onChange={this.onChangeLink2Label}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Link 2 Url: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.link2Url}
+                            onChange={this.onChangeLink2Url}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Link 3 Label: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.link3Label}
+                            onChange={this.onChangeLink3Label}
+                            />
+                    </div>
+                    <div className="formGroup">
+                        <label>Link 3 Url: </label>
+                        <input type ="text" 
+                            className = "form-control"
+                            value={this.state.link3Url}
+                            onChange={this.onChangeLink3Url}
+                            />
+                    </div>
 
-                
+                    
 
-                <div className="form-group">
-                    <input type="submit" value="Update"
-                        className="btn btn-primary" />
-                </div>
+                    <div className="form-group">
+                        <input type="submit" value="Update"
+                            className="btn btn-primary" />
+                    </div>
 
-            </form>
+                </form>
+            </div>
         </div>
 
         ) 
