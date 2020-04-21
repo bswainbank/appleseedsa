@@ -34,10 +34,11 @@ const Business = props => (
                 <div>
                     <address>
                         {props.business.info.address.addr1}<br></br>
-                        {props.business.info.address.addr2}  
+                        {props.business.info.address.addr2}
                         {props.business.info.address.addr2 ? (<br></br> ) : null}
-                        {props.business.info.address.city}
+                        {props.business.info.address.city}&nbsp;
                         {props.business.info.address.state}
+                        {props.business.info.address.state ? (<br></br> ) : null}
                         {props.business.info.address.zip}
                     </address>
                 </div>
@@ -53,29 +54,26 @@ const Business = props => (
         </div>
 
 
-
-
-
         <div className = 'socialMedia'>
           
             <h5>Follow us:</h5>
             {props.business.info.social.facebook ? (                
                 <div>                  
-                    <a className = 'btnFB' href={props.business.info.social.facebook} target="_blank"> <FontAwesomeIcon icon={faFacebookF} /></a>        
+                    <a className = 'btnFB' href={props.business.info.social.facebook} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faFacebookF} /></a>        
                 </div>
              ) : null}   
 
 
             {props.business.info.social.twitter ? (                
                 <div>                  
-                    <a className = 'btnTwitter' href={props.business.info.social.twitter} target="_blank"> <FontAwesomeIcon icon={faTwitter} /></a>        
+                    <a className = 'btnTwitter' href={props.business.info.social.twitter} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faTwitter} /></a>        
                 </div>
             ) : null}  
 
 
             {props.business.info.social.instagram ? (                
                 <div>                  
-                    <a className = 'btnInst' href={props.business.info.social.twitter} target="_blank"> <FontAwesomeIcon icon={faInstagram} /></a>        
+                    <a className = 'btnInst' href={props.business.info.social.instagram} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faInstagram} /></a>        
                 </div>
             ) : null}  
         </div>

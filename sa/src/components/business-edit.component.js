@@ -134,6 +134,7 @@ export default class BusinessEdit extends Component {
             })
             .catch((error) => {
                 console.log(error);
+                window.location = '/home/';
             })
     }
 
@@ -437,6 +438,7 @@ export default class BusinessEdit extends Component {
             .catch((error) => {
                 console.log("ERR" + error.response.data);
                 this.setState({errorMessage : error.response.data});
+                window.location = '../home';
             });
 
     }

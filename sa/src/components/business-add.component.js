@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import FileUpload from './image-upload.component';
 import './css/business-add.components.css';

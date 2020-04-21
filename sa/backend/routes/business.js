@@ -95,8 +95,7 @@ router.route('/load/:pageId').get((req, res) => {
             console.log(loggedInUser);
             console.log(business.username);
             if(!(loggedInUser === business.username)) {
-                console.log("Login Failed");
-                err => res.status(403).json("Login required");
+                res.status(403).json("Login required");
             } else {
                 res.json(business) 
             }
