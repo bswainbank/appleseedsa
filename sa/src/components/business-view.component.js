@@ -54,66 +54,108 @@ const Business = props => (
         </div>
 
 
-        <div className = 'socialMedia'>
-          
-            <h5>Follow us:</h5>
-            {props.business.info.social.facebook ? (                
-                <div>                  
-                    <a className = 'btnFB' href={props.business.info.social.facebook} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faFacebookF} /></a>        
+        <div className ="section">
+           
+            {(props.business.info.social.facebook || props.business.info.social.twitter || props.business.info.social.instagram) ? (
+                <div className='subhead'>
+                    <h5>Follow us:</h5>
                 </div>
-             ) : null}   
+             ) : null}
 
+            <div class="row subsection">
+                {props.business.info.social.facebook ? (                
+                    <div class="col-md-1">                  
+                        <a className = 'btnFB' href={props.business.info.social.facebook} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faFacebookF} /></a>        
+                    </div>
+                ) : null}   
 
-            {props.business.info.social.twitter ? (                
-                <div>                  
-                    <a className = 'btnTwitter' href={props.business.info.social.twitter} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faTwitter} /></a>        
-                </div>
-            ) : null}  
+                {props.business.info.social.twitter ? (                
+                    <div class="col-md-1">                  
+                        <a className = 'btnTwitter' href={props.business.info.social.twitter} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faTwitter} /></a>        
+                    </div>
+                ) : null}  
 
+                {props.business.info.social.instagram ? (                
+                    <div class="col-md-1">                  
+                        <a className = 'btnInst' href={props.business.info.social.instagram} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faInstagram} /></a>        
+                    </div>
+                ) : null}  
 
-            {props.business.info.social.instagram ? (                
-                <div>                  
-                    <a className = 'btnInst' href={props.business.info.social.instagram} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faInstagram} /></a>        
-                </div>
-            ) : null}  
+            </div>     
         </div>
 
-        <div className = 'onlineSales'>{props.business.info.onlineSales.text}
-            {props.business.info.onlineSales.url ? (
-                <div className = 'salesURL'>{props.business.info.onlineSales.url}</div>
-            ) : null }
+        {(props.business.info.onlineSales.text || props.business.info.onlineSales.url) ? (
+        <div className ='section'>
+            <div className='subHead'>
+                <h5>Shop Online:</h5>
+            </div>
+            <div className = 'subsection'>{props.business.info.onlineSales.text}
+                {props.business.info.onlineSales.url ? (
+                    <div className>
+                        <a href={props.business.info.onlineSales.url}>Shop Now</a>
+                    </div>
+                ) : null }
+            </div>
         </div>
-
-
-        <div className = 'deliveryText'>{props.business.info.delivery.text}</div>
-        {props.business.info.delivery.url ? (
-            <div><a href={props.business.info.delivery.url}>Delivery</a></div>
         ) : null }
 
-        <div className = 'divLinks'>{props.business.info.giftCard.text}
-        {props.business.info.giftCard.url ? (
-            <div><a href={props.business.info.giftCard.url}>Gift Cards</a></div>
-        ) : null }</div>
 
+        {(props.business.info.delivery.text || props.business.info.delivery.url) ? (
+            <div className ='section'>
+                <div className='subHead'>
+                    <h5>Delivery:</h5>
+                </div>
+                <div className = 'subsection'>{props.business.info.delivery.text}
+                {props.business.info.delivery.url ? (
+                   <div className>
+                        <a href={props.business.info.delivery.url}>Delivery</a>
+                   </div>
+                ) : null }
+                </div>
+            </div>
+        ) : null }
 
-        <div className = 'divLinks'>
-            {props.business.info.links.link1Url ? (
-                <div><a href={props.business.info.links.link1Url}>{props.business.info.links.link1Label}</a></div>
-            ) : null }
-        </div>
+        {(props.business.info.giftCard.text || props.business.info.giftCard.url) ? (
+            <div className ='section'>
+                <div className='subHead'>
+                    <h5>Gift Cards:</h5>
+                </div>
+                <div className = 'subsection'>{props.business.info.giftCard.text}
+                {props.business.info.giftCard.url ? (
+                   <div className>
+                        <a href={props.business.info.giftCard.url}>Purcase a Gift Card</a>
+                   </div>
+                ) : null }
+                </div>
+            </div>
+        ) : null }
+
+        {(props.business.info.links.link1Label || props.business.info.links.link2Label || props.business.info.links.link3Label) ? (
+            <div className ='section'>
+                <div className='subHead'>
+                    <h5>Additional Links:</h5>
+                </div>
+                <div className = 'subsection'>            
+                    <div className = 'divLinks'>
+                        {props.business.info.links.link1Url ? (
+                            <div><a href={props.business.info.links.link1Url}>{props.business.info.links.link1Label}</a></div>
+                        ) : null }
+                    </div>
                 
-        <div className = 'divLinks'>
-            {props.business.info.links.link2Url ? (
-                <div><a href={props.business.info.links.link2Url}>{props.business.info.links.link2Label}</a></div>
-            ) : null }
-        </div>
+                    <div className = 'divLinks'>
+                        {props.business.info.links.link2Url ? (
+                            <div><a href={props.business.info.links.link2Url}>{props.business.info.links.link2Label}</a></div>
+                        ) : null }
+                    </div>
 
-
-        <div className = 'divLinks'>
-            {props.business.info.links.link3Url ? (
-                <div><a href={props.business.info.links.link3Url}>{props.business.info.links.link3Label}</a></div>
-            ) : null }
-        </div>
+                    <div className = 'divLinks'>
+                        {props.business.info.links.link3Url ? (
+                            <div><a href={props.business.info.links.link3Url}>{props.business.info.links.link3Label}</a></div>
+                        ) : null }
+                    </div>
+                </div>
+            </div>
+        ) : null }
 
         <div><p>{props.business.info.bottomMessage}</p></div>
     </div>

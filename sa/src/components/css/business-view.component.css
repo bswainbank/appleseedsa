@@ -16,6 +16,8 @@
     border-image-slice: 20;
     border-radius: 25px;
     padding: 40px;
+    padding-top: 0px;
+
 }
 .h1BusinessName{
     text-align: center;
@@ -27,16 +29,22 @@
     margin: 40px 0;
 }
 
-.btnFB{
-    color: white;
-    background-color: rgba(17, 27, 193, 0.96);
-    width: 100px;
-    padding: 3px 30px;
-    border-radius: 5px;
+
+
+.section{
+    margin: 25px 0;
 }
 
-.socialMedia{
-    margin: 20px 0;
+.subHead{
+    margin: 12;
+}
+
+.subsection{
+    padding:30px;
+    padding-top: 5px;
+    font-style: initial;
+    font-size: 20px;
+    text-align: left;
 }
 
 .btnTwitter{
@@ -51,16 +59,27 @@
     border-radius: 5px;
 }
 
+.btnFB{
+    color: white;
+    background-color: rgba(17, 27, 193, 0.96);
+    width: 100px;
+    padding: 3px 30px;
+    border-radius: 5px;
+}
+
 .onlineSales{
-    margin: 30px 0;
-    color: red;
+    /*margin: 30px 0;*/
+    /*color: darkblue;*/
     font-style: initial;
-    font-size: 25px;
-    text-align: center;
+    font-size: 20px;
+    text-align: left;
+    padding: 30px;
+    padding-top: 5px;
+   
 }
 
 .salesURL{
-    color: blue;
+    color: green;
 }
 
 .deliveryText{
@@ -68,5 +87,9 @@
 }
 
 .divLinks{
-    margin: 20px 0;
+    margin: 7px 0;
+}
+
+.spacer{
+    margin: 30px;
 }
