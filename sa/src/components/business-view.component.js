@@ -23,6 +23,9 @@ const Business = props => (
         <div className = 'row'>
             <div className='col-md-6'>
                 <h5>Contact us:</h5>
+                {props.business.info.website ? (
+                      <div>Website: <a href={props.business.info.website}>{props.business.info.website}</a></div>
+                 ) : null}
                 {props.business.info.phone ? (
                       <div>Phone: {props.business.info.phone}</div>
                  ) : null}
@@ -44,45 +47,15 @@ const Business = props => (
                 </div>
             </div>   
 
-            <div className='col-md-6'>
-                <h5>Open Hours:</h5>
-                {props.business.info.hours.text ? (
-                    <div>{props.business.info.hours.text}</div>
-                ) : null}
-            </div>   
+            {props.business.info.hours.text ? (
+                <div className='col-md-6'>
+                    <h5>Open Hours:</h5>
+                        <div>{props.business.info.hours.text}</div>
+                </div> 
+             ) : null}  
 
         </div>
-
-
-        <div className ="section">
-           
-            {(props.business.info.social.facebook || props.business.info.social.twitter || props.business.info.social.instagram) ? (
-                <div className='subhead'>
-                    <h5>Follow us:</h5>
-                </div>
-             ) : null}
-
-            <div class="row subsection">
-                {props.business.info.social.facebook ? (                
-                    <div class="col-md-1">                  
-                        <a className = 'btnFB' href={props.business.info.social.facebook} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faFacebookF} /></a>        
-                    </div>
-                ) : null}   
-
-                {props.business.info.social.twitter ? (                
-                    <div class="col-md-1">                  
-                        <a className = 'btnTwitter' href={props.business.info.social.twitter} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faTwitter} /></a>        
-                    </div>
-                ) : null}  
-
-                {props.business.info.social.instagram ? (                
-                    <div class="col-md-1">                  
-                        <a className = 'btnInst' href={props.business.info.social.instagram} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faInstagram} /></a>        
-                    </div>
-                ) : null}  
-
-            </div>     
-        </div>
+ 
 
         {(props.business.info.onlineSales.text || props.business.info.onlineSales.url) ? (
         <div className ='section'>
@@ -91,7 +64,7 @@ const Business = props => (
             </div>
             <div className = 'subsection'>{props.business.info.onlineSales.text}
                 {props.business.info.onlineSales.url ? (
-                    <div className>
+                    <div>
                         <a href={props.business.info.onlineSales.url}>Shop Now</a>
                     </div>
                 ) : null }
@@ -107,7 +80,7 @@ const Business = props => (
                 </div>
                 <div className = 'subsection'>{props.business.info.delivery.text}
                 {props.business.info.delivery.url ? (
-                   <div className>
+                   <div>
                         <a href={props.business.info.delivery.url}>Delivery</a>
                    </div>
                 ) : null }
@@ -122,7 +95,7 @@ const Business = props => (
                 </div>
                 <div className = 'subsection'>{props.business.info.giftCard.text}
                 {props.business.info.giftCard.url ? (
-                   <div className>
+                   <div>
                         <a href={props.business.info.giftCard.url}>Purcase a Gift Card</a>
                    </div>
                 ) : null }
@@ -157,7 +130,40 @@ const Business = props => (
             </div>
         ) : null }
 
-        <div><p>{props.business.info.bottomMessage}</p></div>
+
+        <div className ="section">
+           
+           {(props.business.info.social.facebook || props.business.info.social.twitter || props.business.info.social.instagram) ? (
+               <div className='subhead'>
+                   <h5>Follow us:</h5>
+               </div>
+            ) : null}
+
+           <div className="row subsection">
+               {props.business.info.social.facebook ? (                
+                   <div className="col-md-1">                  
+                       <a className = 'btnFB' href={props.business.info.social.facebook} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faFacebookF} /></a>        
+                   </div>
+               ) : null}   
+
+               {props.business.info.social.twitter ? (                
+                   <div className="col-md-1">                  
+                       <a className = 'btnTwitter' href={props.business.info.social.twitter} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faTwitter} /></a>        
+                   </div>
+               ) : null}  
+
+               {props.business.info.social.instagram ? (                
+                   <div className="col-md-1">                  
+                       <a className = 'btnInst' href={props.business.info.social.instagram} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faInstagram} /></a>        
+                   </div>
+               ) : null}  
+
+           </div>     
+       </div>
+
+        <div><h5>{props.business.info.bottomMessage}</h5></div>
+ 
+        <div className="modTime">Last Updated: {props.business.updatedAt}</div>
     </div>
     </div>  
 )
