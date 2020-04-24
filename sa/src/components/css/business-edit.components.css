@@ -8,6 +8,8 @@
     padding-bottom: 50px;    
 }
 
+
+
 .container{
     background-color: white;
     padding:5%;
@@ -17,3 +19,74 @@
 .editPageHeading{
     margin-bottom: 40px;
 }
+
+.rowPageData{
+    margin-top : 30px;
+    margin-bottom: 20px;
+}
+
+.divLogin{
+    margin-top : 30px;
+    margin-bottom: 20px;
+}
+
+.imageUplaod{
+    margin-top: 42px;
+    border: 2px solid;
+    border-radius: 10px;
+    height: 300px;
+}
+/* 
+.fileName{
+    margin-top:
+} */
+
+.custom-file-label{
+    border: none;
+    margin-top: 20%;
+}
+
+.custom-file{
+    /* height: 100px; */
+    margin-top: 10%;
+}
+
+input[type="file"] {
+    display: none;
+  }
+
+.inputImageIcon{
+    cursor: pointer;
+    text-align: center;    
+    margin:auto;
+    width:100%;
+}
+
+.uploadedImage{
+    height: 100px;
+}
+
+.icon1{
+    margin: 25px 2px 2px 2px;
+}
+
+.uploadIcon{
+    text-align: center;
+    margin-left: 40%;
+    border: 1px dashed;
+    width: 80px;
+    
+
+}
+
+.uploadLabel{
+    width: 100%;
+    text-align: center;    
+    margin: auto;
+    font-size: 12px;
+}
+  
+.formControl{
+    margin-top: 0px;
+}
+

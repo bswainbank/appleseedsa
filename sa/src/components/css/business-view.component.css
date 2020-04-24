@@ -46,6 +46,18 @@
     font-size: 20px;
     text-align: left;
 }
+   
+.btnFB{
+    color: white;
+    background-color: rgba(17, 27, 193, 0.96);
+    width: 10px;
+    padding: 1px 10px;
+    border-radius: 50px;
+}
+
+.socialMedia{
+    margin: 20px 10px;
+}
 
 .btnTwitter{
     width: 100px;
@@ -92,4 +104,9 @@
 
 .spacer{
     margin: 30px;
+}
+
+
+.bottomMessage{
+    text-align: center;
 }
