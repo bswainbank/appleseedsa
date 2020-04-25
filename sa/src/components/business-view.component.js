@@ -16,9 +16,9 @@ const Business = props => (
                             </div>
                         </div>
             )  : null } 
-            <div className = 'h1 BusinessName'><h1>{props.business.info.name}</h1></div>
+            <div className = 'mt-5 h1 BusinessName'><h1>{props.business.info.name}</h1></div>
         </div>
-        <div><p className='lead businessLead'>{props.business.info.topMessage}</p></div>
+        <div><p className='texta lead businessLead'>{props.business.info.topMessage}</p></div>
         
         <div className = 'row'>
             <div className='col-md-6'>
@@ -50,7 +50,7 @@ const Business = props => (
             {props.business.info.hours.text ? (
                 <div className='col-md-6'>
                     <h5>Open Hours:</h5>
-                        <div>{props.business.info.hours.text}</div>
+                        <div className="texta">{props.business.info.hours.text}</div>
                 </div> 
              ) : null}  
 
@@ -62,7 +62,7 @@ const Business = props => (
             <div className='subHead'>
                 <h5>Shop Online:</h5>
             </div>
-            <div className = 'subsection'>{props.business.info.onlineSales.text}
+            <div className = 'texta subsection'>{props.business.info.onlineSales.text}
                 {props.business.info.onlineSales.url ? (
                     <div>
                         <a href={props.business.info.onlineSales.url}>Shop Now</a>
@@ -78,7 +78,7 @@ const Business = props => (
                 <div className='subHead'>
                     <h5>Delivery:</h5>
                 </div>
-                <div className = 'subsection'>{props.business.info.delivery.text}
+                <div className = 'texta subsection'>{props.business.info.delivery.text}
                 {props.business.info.delivery.url ? (
                    <div>
                         <a href={props.business.info.delivery.url}>Delivery</a>
@@ -93,7 +93,7 @@ const Business = props => (
                 <div className='subHead'>
                     <h5>Gift Cards:</h5>
                 </div>
-                <div className = 'subsection'>{props.business.info.giftCard.text}
+                <div className = 'texta subsection'>{props.business.info.giftCard.text}
                 {props.business.info.giftCard.url ? (
                    <div>
                         <a href={props.business.info.giftCard.url}>Purcase a Gift Card</a>
@@ -161,7 +161,7 @@ const Business = props => (
            </div>     
        </div>
 
-        <div><h5>{props.business.info.bottomMessage}</h5></div>
+        <div><h5 className="texta">{props.business.info.bottomMessage}</h5></div>
  
         <div className="float-right">Last Updated: {props.business.updatedAt.substring(0,10)}</div>
     </div>

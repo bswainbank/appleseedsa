@@ -99,3 +99,7 @@ input[type="file"] {
     padding-right: 60px;
 }
 
+.texta {
+    white-space: pre-wrap;
+}
+
