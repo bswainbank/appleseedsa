@@ -30,27 +30,6 @@
     margin-bottom: 20px;
 }
 
-.imageUplaod{
-    margin-top: 42px;
-    border: 2px solid;
-    border-radius: 10px;
-    height: 300px;
-}
-/* 
-.fileName{
-    margin-top:
-} */
-
-.custom-file-label{
-    border: none;
-    margin-top: 20%;
-}
-
-.custom-file{
-    /* height: 100px; */
-    margin-top: 10%;
-}
-
 input[type="file"] {
     display: none;
   }
@@ -85,8 +64,38 @@ input[type="file"] {
     margin: auto;
     font-size: 12px;
 }
+
+.site-link{
+    font-size: 24px;
+}
   
-.formControl{
+.form-control{
     margin-top: 0px;
+}
+
+.form-group2{
+   padding: 0px;
+}
+
+.addPageHeading{
+    margin-bottom: 40px;
+}
+
+.help-block{
+    margin-left:5px;
+}
+
+.l1{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.l2{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.show-image {
+    padding-right: 60px;
 }
 

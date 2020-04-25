@@ -456,40 +456,43 @@ export default class BusinessEdit extends Component {
                     
                 <form onSubmit={this.onSubmit}>
                     
-                    <div className="formGroup">
-                        <label>Page Id: </label>
+                    <div className="form-group">
+                        <label className="l1">Page Id:</label>
                         <input type ="text" 
                             required
                             className = "form-control"
                             value={this.state.pageId}
                             onChange={this.onChangePageId}
                             />
+                            <span className="help-block text-muted">Page Id is a unique identifier of your page. It'll be added to the URL (see below).</span>
                     </div>
 
-                    <div className='row rowPageData'>
-                        <div className = 'col-md-6'>
-                            View and test your page:<br></br>
-                            <a href={"http://localhost:3000/view/" + this.state.pageId}>{"http://localhost:3000/view/" + this.state.pageId}</a>
+                   
+                    <div className = 'link-group'>
+                        <div className="l1"> View and test your page:</div><br></br>
+                        <a className="site-link" href={"http://localhost:3000/view/" + this.state.pageId}>{"http://localhost:3000/view/" + this.state.pageId}</a>
+                        <div>
+                        <span className="help-block text-muted">Share this URL so people can reach your page. You can also use it to test and view the page.</span>
                         </div>
+                    </div>
 
-                        <div className = 'col-md-6 '>
-                            Last Updated: {this.state.modifiedDate}
-                        </div>
+                    <div className = 'text-muted float-right'>
+                        Last Updated: {this.state.modifiedDate.substring(0,10)}
                     </div>
 
                      <div className = 'row divLogin'>
                          
-                        <div className=" col-md-6 formGroup">
-                            <label>Username </label>
+                        <div className=" col-md-6 form-group">
+                            <label className="l2">Username </label>
                             <input type ="text" 
                                 className = "mt-0 form-control"
                                 value={this.state.username}
                                 onChange={this.onChangeUsername}
                                 />
                         </div>
-                        <div className="col-md-6 formGroup">
-                            <label>Password </label>
-                            <input type ="text" 
+                        <div className="col-md-6 form-group">
+                            <label className="l2">Password </label>
+                            <input type ="password" 
                                 className = "mt-0 form-control"
                                 value={this.state.password}
                                 onChange={this.onChangePassword}
@@ -497,10 +500,42 @@ export default class BusinessEdit extends Component {
                         </div>
                     </div>
 
+                    
+                    <div className='row custom-file'>
+                        <div className="row">
+                            <input
+                                type='file'
+                                className='custom-file-input'
+                                id='customFile'
+                                onChange={this.onChangeUploadFileName}
+                            />
+                            <label className='custom-file-label' htmlFor='customFile'>
+                                {this.state.uploadFileName}
+                            </label>
+                        </div>
+                        <div className='row'>
+                            <a href="#" className='p-1 btn btn-primary ml-2 mt-5' onClick={this.handleUpload}>
+                                Upload
+                            </a>
+                         </div>
+                       
+                     </div>
+
+
+                    {this.state.uploadFileId ? (
+                        <div className='row mt-5'>
+                            <div className='col-md-6 m-auto'>
+                                <img src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
+                            </div>
+                        </div>
+                    )  : null } 
+
+                   
+
                     <div className = 'row justify-content-between'>
                         <div className = 'col-lg-6'>
-                            <div className="formGroup">
-                                <label>Business Name: </label>
+                            <div className="form-group">
+                                <label className="l1">Business Name: </label>
                                 <input type ="text" 
                                     required
                                     className = "mt-0 form-control"
@@ -509,8 +544,8 @@ export default class BusinessEdit extends Component {
                                     />
                             </div>
 
-                            <div className="formGroup">
-                                <label>Website: </label>
+                            <div className="form-group">
+                                <label className="l2">Website: </label>
                                 <input type ="text" 
                                     className = "mt-0 form-control"
                                     value={this.state.website}
@@ -518,56 +553,20 @@ export default class BusinessEdit extends Component {
                                     />
                             </div>                
                         </div>
-                    
-
-                        <div className = 'col-lg-5 imageUplaod'>
-
-                            <div className='custom-file mb-3 row'>                              
-                                    <input 
-                                        type='file'
-                                        className='custom-file-input '
-                                        id='customFile'
-                                        onChange={this.onChangeUploadFileName}
-                                    />
-                                    <label className='inputImageIcon btn-block' htmlFor='customFile'>
-                                        <div className = 'row uploadIcon'>
-                                            <FontAwesomeIcon icon={faImage} color='#3B5998' size='3x' transform = 'right-5'/>
-                                        </div>
-                                        
-                                        <div className = 'row uploadLabel'>
-                                        <p className = 'col-md-12'>{this.state.uploadFileName}</p>
-                                        </div>
-                                        
-                                    </label>                                
-                            </div>
-
-                            {this.state.uploadFileId ? (
-                                <div className='row mt-4'>
-                                    <div className='col-md-4 m-auto'>
-                                        <img className = 'uploadedImage' src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
-                                    </div>
-                                </div>
-                            )  : null } 
-
-                            <a href="#" className='btn btn-primary btn-block mt-3 mb-2' onClick={this.handleUpload}>
-                                Upload
-                            </a>
-
-                        </div>
                     </div>
 
                     <div className = 'row  mt-5 p-3 groupAddress'>   
                        <div className = 'row w-100'>
-                        <div className="col-md-6 formGroup">
-                            <label>Address: </label>
+                        <div className="col-md-6 form-group">
+                            <label className="l2">Address: </label>
                             <input type ="text" 
                                 className = "mt-0 form-control"
                                 value={this.state.addr1}
                                 onChange={this.onChangeAddr1}
                                 />
                         </div>
-                        <div className="col-md-6 formGroup">
-                            <label>Address 2: </label>
+                        <div className="col-md-6 form-group">
+                            <label className="l2">Address 2: </label>
                             <input type ="text" 
                                 className = "mt-0 form-control"
                                 value={this.state.addr2}
@@ -577,24 +576,24 @@ export default class BusinessEdit extends Component {
                       </div>
 
                       <div className = 'row w-100 mt-4'>
-                        <div className="formGroup col-md-4">
-                            <label>City: </label>
+                        <div className="form-group col-md-4">
+                            <label className="l2">City: </label>
                             <input type ="text" 
                                 className = "mt-0 form-control"
                                 value={this.state.city}
                                 onChange={this.onChangeCity}
                                 />
                         </div>
-                        <div className="formGroup col-md-4">
-                            <label>State: </label>
+                        <div className="form-group col-md-4">
+                            <label className="l2">State: </label>
                             <input type ="text" 
                                 className = "mt-0 form-control"
                                 value={this.state.state}
                                 onChange={this.onChangeState}
                                 />
                         </div>
-                        <div className="formGroup col-md-4">
-                            <label>Zip: </label>
+                        <div className="form-group col-md-4">
+                            <label className="l2">Zip: </label>
                             <input type ="text" 
                                 className = "mt-0 form-control"
                                 value={this.state.zip}
@@ -605,16 +604,16 @@ export default class BusinessEdit extends Component {
                     </div>
 
                     <div className = 'row w-100 mt-4'>
-                        <div className="col-md-6 formGroup">
-                            <label>Phone: </label>
+                        <div className="col-md-6 form-group">
+                            <label className="l2">Phone: </label>
                             <input type ="text" 
                                 className = "mt-0 form-control"
                                 value={this.state.phone}
                                 onChange={this.onChangePhone}
                                 />
                         </div>
-                        <div className="col-md-6 formGroup">
-                            <label>Email: </label>
+                        <div className="col-md-6 form-group">
+                            <label className="l2">Email: </label>
                             <input type ="text" 
                                 className = "mt-0 form-control"
                                 value={this.state.email}
@@ -622,96 +621,96 @@ export default class BusinessEdit extends Component {
                                 />
                         </div>
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Welcome Message: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Welcome Message: </label>
                         <input type ="textarea" 
                             className = "mt-0 form-control"
                             value={this.state.topMessage}
                             onChange={this.onChangeTopMessage}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Footer Message: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Footer Message: </label>
                         <input type ="textarea" 
                             className = "mt-0 form-control"
                             value={this.state.bottomMessage}
                             onChange={this.onChangeBottomMessage}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Hours: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Hours: </label>
                         <input type ="textarea" 
                             className = "mt-0 form-control"
                             value={this.state.hoursText}
                             onChange={this.onChangeHoursText}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Facebook: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Facebook: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.facebook}
                             onChange={this.onChangeFacebook}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Twitter: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Twitter: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.twitter}
                             onChange={this.onChangeTwitter}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Instagram: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Instagram: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.instagram}
                             onChange={this.onChangeInstagram}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Gift Card Text: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Gift Card Text: </label>
                         <input type ="textarea" 
                             className = "mt-0 form-control"
                             value={this.state.giftText}
                             onChange={this.onChangeGiftText}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Gift Card Url: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Gift Card Url: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.giftUrl}
                             onChange={this.onChangeGiftUrl}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Online Sales Text: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Online Sales Text: </label>
                         <input type ="textarea" 
                             className = "mt-0 form-control"
                             value={this.state.onlineSalesText}
                             onChange={this.onChangeOnlineSalesText}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Online Sales Url: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Online Sales Url: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.onlineSalesUrl}
                             onChange={this.onChangeOnlineSalesUrl}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Delivery Text: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Delivery Text: </label>
                         <input type ="textarea" 
                             className = "mt-0 form-control"
                             value={this.state.deliveryText}
                             onChange={this.onChangeDeliveryText}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Delivery Url: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Delivery Url: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.deliveryUrl}
@@ -720,8 +719,8 @@ export default class BusinessEdit extends Component {
                     </div>
 
 
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Link 1 Label: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Link 1 Label: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.link1Label}
@@ -729,40 +728,40 @@ export default class BusinessEdit extends Component {
                             />
                     </div>
 
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Link 1 Url: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Link 1 Url: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.link1Url}
                             onChange={this.onChangeLink1Url}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Link 2 Label: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Link 2 Label: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.link2Label}
                             onChange={this.onChangeLink2Label}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Link 2 Url: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Link 2 Url: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.link2Url}
                             onChange={this.onChangeLink2Url}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Link 3 Label: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Link 3 Label: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.link3Label}
                             onChange={this.onChangeLink3Label}
                             />
                     </div>
-                    <div className="p-1 mt-4 formGroup">
-                        <label>Link 3 Url: </label>
+                    <div className="p-1 mt-4 form-group">
+                        <label className="l2">Link 3 Url: </label>
                         <input type ="text" 
                             className = "mt-0 form-control"
                             value={this.state.link3Url}

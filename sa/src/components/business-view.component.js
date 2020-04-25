@@ -16,7 +16,7 @@ const Business = props => (
                             </div>
                         </div>
             )  : null } 
-            <div className = 'h1BusinessName'><h1>{props.business.info.name}</h1></div>
+            <div className = 'h1 BusinessName'><h1>{props.business.info.name}</h1></div>
         </div>
         <div><p className='lead businessLead'>{props.business.info.topMessage}</p></div>
         
@@ -57,47 +57,51 @@ const Business = props => (
         </div>
  
 
-
-
-
-        
-        <div className = 'socialMedia'>
-          
-          <div className = 'row'>
-                <h5>Follow us:</h5>
-          </div>
-          
-          <div className = 'row'>             
-            {props.business.info.social.facebook ? (                
-                <div className = 'col-sm-1'>                  
-                    <a className = 'btnFB' href={props.business.info.social.facebook} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faFacebookF} /></a>        
-                </div>
-             ) : null}   
-
-
-            {props.business.info.social.twitter ? (                
-                <div className = 'col-sm-1'>                  
-                    <a className = 'btnTwitter' href={props.business.info.social.twitter} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faTwitter} /></a>        
-                </div>
-            ) : null}  
-
-
-            {props.business.info.social.instagram ? (                
-                <div className = 'col-sm-1'>                  
-                    <a className = 'btnInst' href={props.business.info.social.instagram} target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faInstagram} /></a>        
-                </div>
-            ) : null}  
-          
-          </div>  
-
+        {(props.business.info.onlineSales.text || props.business.info.onlineSales.url) ? (
+        <div className ='section'>
+            <div className='subHead'>
+                <h5>Shop Online:</h5>
+            </div>
+            <div className = 'subsection'>{props.business.info.onlineSales.text}
+                {props.business.info.onlineSales.url ? (
+                    <div>
+                        <a href={props.business.info.onlineSales.url}>Shop Now</a>
+                    </div>
+                ) : null }
+            </div>
         </div>
+        ) : null }
 
-        <div className = 'onlineSales'>
-            {props.business.info.onlineSales.url ? (
-                <div className = 'salesURL'>
-                    <a href={props.business.info.onlineSales.url}> {props.business.info.onlineSales.text}</a> </div>
-            ) : null }
-        </div>
+
+        {(props.business.info.delivery.text || props.business.info.delivery.url) ? (
+            <div className ='section'>
+                <div className='subHead'>
+                    <h5>Delivery:</h5>
+                </div>
+                <div className = 'subsection'>{props.business.info.delivery.text}
+                {props.business.info.delivery.url ? (
+                   <div>
+                        <a href={props.business.info.delivery.url}>Delivery</a>
+                   </div>
+                ) : null }
+                </div>
+            </div>
+        ) : null }
+
+        {(props.business.info.giftCard.text || props.business.info.giftCard.url) ? (
+            <div className ='section'>
+                <div className='subHead'>
+                    <h5>Gift Cards:</h5>
+                </div>
+                <div className = 'subsection'>{props.business.info.giftCard.text}
+                {props.business.info.giftCard.url ? (
+                   <div>
+                        <a href={props.business.info.giftCard.url}>Purcase a Gift Card</a>
+                   </div>
+                ) : null }
+                </div>
+            </div>
+        ) : null }
 
         {(props.business.info.links.link1Label || props.business.info.links.link2Label || props.business.info.links.link3Label) ? (
             <div className ='section'>
@@ -159,7 +163,7 @@ const Business = props => (
 
         <div><h5>{props.business.info.bottomMessage}</h5></div>
  
-        <div className="modTime">Last Updated: {props.business.updatedAt}</div>
+        <div className="float-right">Last Updated: {props.business.updatedAt.substring(0,10)}</div>
     </div>
     </div>  
 )
@@ -218,7 +222,9 @@ export default class BusinessView extends Component {
                         link3Label: '',
                         link3Url: '',
                     },
-                }
+                },
+
+                updatedAt: '',
             }
         };
 

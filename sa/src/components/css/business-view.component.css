@@ -22,6 +22,7 @@
 .h1BusinessName{
     text-align: center;
     margin: 30px;
+    padding-top: 50px;
 }
 
 .businessLead{
@@ -29,34 +30,20 @@
     margin: 40px 0;
 }
 
-
-
 .section{
-    margin: 25px 0;
+    margin: 10px 0;
 }
 
 .subHead{
-    margin: 12;
+    margin: 8px;
 }
 
 .subsection{
     padding:30px;
-    padding-top: 5px;
+    padding-top: 2px;
     font-style: initial;
-    font-size: 20px;
+    font-size: 18px;
     text-align: left;
-}
-   
-.btnFB{
-    color: white;
-    background-color: rgba(17, 27, 193, 0.96);
-    width: 10px;
-    padding: 1px 10px;
-    border-radius: 50px;
-}
-
-.socialMedia{
-    margin: 20px 10px;
 }
 
 .btnTwitter{
@@ -79,17 +66,6 @@
     border-radius: 5px;
 }
 
-.onlineSales{
-    /*margin: 30px 0;*/
-    /*color: darkblue;*/
-    font-style: initial;
-    font-size: 20px;
-    text-align: left;
-    padding: 30px;
-    padding-top: 5px;
-   
-}
-
 .salesURL{
     color: green;
 }
@@ -104,9 +80,4 @@
 
 .spacer{
     margin: 30px;
-}
-
-
-.bottomMessage{
-    text-align: center;
 }
