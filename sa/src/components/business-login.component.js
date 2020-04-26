@@ -64,8 +64,8 @@ export default class BusinessLogin extends Component {
             <form onSubmit={this.onSubmit}>
                 
                 <div className="formGroup">
-                    {/* <label>Username: </label> */}
                     <input type ="text" 
+                        required
                         className = "form-control"
                         value={this.state.username}
                         onChange={this.onChangeUsername}
@@ -73,8 +73,8 @@ export default class BusinessLogin extends Component {
                         />
                 </div>
                 <div className="formGroup">
-                    {/* <label>Password: </label> */}
-                    <input type ="text" 
+                    <input type ="password" 
+                        required
                         className = "form-control"
                         value={this.state.password}
                         onChange={this.onChangePassword}

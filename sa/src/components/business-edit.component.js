@@ -114,7 +114,7 @@ export default class BusinessEdit extends Component {
                     hoursText: response.data.info.hours.text,
                     facebook: response.data.info.social.facebook,
                     twitter: response.data.info.social.twitter,
-                    instragram: response.data.info.social.instagram,
+                    instagram: response.data.info.social.instagram,
                     giftText: response.data.info.giftCard.text,
                     giftUrl: response.data.info.giftCard.url,
                     onlineSalesText: response.data.info.onlineSales.text,
@@ -449,7 +449,10 @@ export default class BusinessEdit extends Component {
         <div className = 'container-edit'>
 
             <div className = 'container'>
-                <h3>Edit Page</h3>
+                <h3>Update Your Business Page</h3>
+                <span className="help-block text-muted">Page Id, username, and password are required and must be unique. 
+                The rest of the elements are optional. Fill in the values that are relevant to you. Save the changes.
+                Then look at the results on your Site Assitant Page</span>
 
                 { this.state.errorMessage &&
                     <h3 className="error"> { this.state.errorMessage } </h3> }
@@ -485,6 +488,7 @@ export default class BusinessEdit extends Component {
                         <div className=" col-md-6 form-group">
                             <label className="l2">Username </label>
                             <input type ="text" 
+                                required
                                 className = "mt-0 form-control"
                                 value={this.state.username}
                                 onChange={this.onChangeUsername}
@@ -493,6 +497,7 @@ export default class BusinessEdit extends Component {
                         <div className="col-md-6 form-group">
                             <label className="l2">Password </label>
                             <input type ="password" 
+                                required
                                 className = "mt-0 form-control"
                                 value={this.state.password}
                                 onChange={this.onChangePassword}
@@ -500,8 +505,10 @@ export default class BusinessEdit extends Component {
                         </div>
                     </div>
 
-                    
+                     
                     <div className='mt-2 row custom-file'>
+                        
+                        
                         <div className="row">
                             <input
                                 type='file'
@@ -518,7 +525,12 @@ export default class BusinessEdit extends Component {
                                 Upload
                             </a>
                          </div>
-                       
+                         
+                         
+                     </div>
+                     <div>
+                        <span className="imageHelp mt-5 help-block text-muted">
+                            Upload a logo image or picture of your business.</span>
                      </div>
 
 

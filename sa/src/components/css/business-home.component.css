@@ -2,11 +2,12 @@
 
 .container-fluid{
     font-family: 'Mukta', sans-serif;
-       height:100vh;
+       height:100%;
        width: 100%;
       /* min-height:550px; */ 
       /* position:relative;
       overflow-y: hidden; */
+      background-color: black;
   }
 
 .container-home{
@@ -25,9 +26,9 @@
     border-radius: 25px;
     position: relative;
     top: 50%;
-    transform: translateY(20%);
+    transform: translateY(5%);
 	text-align:center;
-    width:25%;
+    width:35%;
 	right:0;left:0;
     margin-left: 65%;
     background-color: white;
@@ -39,7 +40,7 @@
     border-radius: 25px;
     position: relative;
     top: 10%    ;
-    transform: translateY(-70%);
+    transform: translateY(-65%);
 	text-align:center;
     width:30%;
 	right:0;left:0;

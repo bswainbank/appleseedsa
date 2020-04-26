@@ -22,7 +22,9 @@ const Business = props => (
         
         <div className = 'row'>
             <div className='col-md-6'>
-                <h5>Contact us:</h5>
+                {(props.business.info.website || props.business.info.phone || props.business.info.email) ? (
+                    <div><h5>Contact us:</h5></div>
+                ) : null}    
                 {props.business.info.website ? (
                       <div>Website: <a href={props.business.info.website}>{props.business.info.website}</a></div>
                  ) : null}
