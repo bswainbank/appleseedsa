@@ -495,7 +495,7 @@ export default class BusinessEdit extends Component {
                                 />
                         </div>
                         <div className="col-md-6 form-group">
-                            <label className="l2">Password </label>
+                            <label className="l2">Password </label> 
                             <input type ="password" 
                                 required
                                 className = "mt-0 form-control"
@@ -506,7 +506,7 @@ export default class BusinessEdit extends Component {
                     </div>
 
                      
-                    <div className='mt-2 row custom-file'>
+                    <div className='mt-2 row custom-file text-center'>
                         
                         
                         <div className="row">
@@ -516,22 +516,22 @@ export default class BusinessEdit extends Component {
                                 id='customFile'
                                 onChange={this.onChangeUploadFileName}
                             />
-                            <label className='custom-file-label' htmlFor='customFile'>
+                            <label className='custom-file-label ml-3' htmlFor='customFile'>
                                 {this.state.uploadFileName}
                             </label>
                         </div>
-                        <div className='row'>
+                        <div className='row btn-block'>
                             <a href="#" className='p-1 btn btn-primary ml-2 mt-5' onClick={this.handleUpload}>
                                 Upload
                             </a>
                          </div>
                          
-                         
-                     </div>
-                     <div>
-                        <span className="imageHelp mt-5 help-block text-muted">
+                         <div className = "mt-3" >
+                          <span className="imageHelp mt-5 help-block text-muted">
                             Upload a logo image or picture of your business.</span>
+                         </div>                    
                      </div>
+
 
 
                     {this.state.uploadFileId ? (

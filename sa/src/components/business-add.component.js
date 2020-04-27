@@ -445,7 +445,7 @@ export default class BusinessAdd extends Component {
                     </div>
 
                      
-                    <div className='mt-2 row custom-file'>
+                    <div className='mt-2 row custom-file text-center'>
                         
                         <div className="row">
                             <input
@@ -454,20 +454,21 @@ export default class BusinessAdd extends Component {
                                 id='customFile'
                                 onChange={this.onChangeUploadFileName}
                             />
-                            <label className='custom-file-label' htmlFor='customFile'>
+                            <label className='custom-file-label ml-3' htmlFor='customFile'>
                                 {this.state.uploadFileName}
                             </label>
                         </div>
-                        <div className='row'>
+                        <div className='row mt-3 btn-block'>
                             <a href="#" className='p-1 btn btn-primary ml-2 mt-5' onClick={this.handleUpload}>
                                 Upload
                             </a>
                          </div>
-                     </div>
-                     <div>
-                        <span className="imageHelp mt-5 help-block text-muted">
+                         <div className = "mt-3">
+                             <span className="imageHelp mt-5 help-block text-muted">
                             Upload a logo image or picture of your business.</span>
+                       </div>
                      </div>
+
 
 
                     {this.state.uploadFileId ? (
