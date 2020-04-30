@@ -16,5 +16,8 @@
     "express-fileupload": "^1.1.7-alpha.3",
     "mongoose": "^5.9.5",
     "node-sessionstorage": "^1.0.0"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
