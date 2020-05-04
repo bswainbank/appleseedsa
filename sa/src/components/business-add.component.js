@@ -307,7 +307,7 @@ export default class BusinessAdd extends Component {
         const formData = new FormData();
         formData.append('file', this.state.uploadFile);
 
-        axios.post('http://localhost:5000/image/upload', formData, {
+        axios.post('http://localhost:5000/sa/api/image/upload', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             },
@@ -383,7 +383,7 @@ export default class BusinessAdd extends Component {
     
         console.log(business);
 
-        axios.post('http://localhost:5000/business/add/', business)
+        axios.post('http://localhost:5000/sa/api/business/add/', business)
             .then(res=> {
                 console.log(res.data)
                 window.location = '/edit/' + business.pageId;
@@ -458,7 +458,7 @@ export default class BusinessAdd extends Component {
                                 {this.state.uploadFileName}
                             </label>
                         </div>
-                        <div className='row mt-3 btn-block'>
+                        <div className='row mt-1'>
                             <a href="#" className='p-1 btn btn-primary ml-2 mt-5' onClick={this.handleUpload}>
                                 Upload
                             </a>
@@ -474,7 +474,7 @@ export default class BusinessAdd extends Component {
                     {this.state.uploadFileId ? (
                         <div className='row mt-5'>
                             <div className='col-md-6 m-auto'>
-                                <img src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
+                                <img src={'http://localhost:5000/sa/api/image/' + this.state.uploadFileId} alt='' />
                             </div>
                         </div>
                     )  : null } 

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './css/business-edit.components.css';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImages, faImage } from '@fortawesome/free-solid-svg-icons'
 
 export default class BusinessEdit extends Component {
     constructor(props) {
@@ -89,7 +87,7 @@ export default class BusinessEdit extends Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:5000/business/load/' + this.props.match.params.pageId)
+        axios.get('http://localhost:5000/sa/api/business/load/' + this.props.match.params.pageId)
             .then(response => {
                console.log(response.data);
 
@@ -355,7 +353,7 @@ export default class BusinessEdit extends Component {
         const formData = new FormData();
         formData.append('file', this.state.uploadFile);
 
-        axios.post('http://localhost:5000/image/upload', formData, {
+        axios.post('http://localhost:5000/sa/api/image/upload', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             },
@@ -431,7 +429,7 @@ export default class BusinessEdit extends Component {
     
         console.log(business);
 
-        axios.post('http://localhost:5000/business/update/' + this.state.id, business)
+        axios.post('http://localhost:5000/sa/api/business/update/' + this.state.id, business)
             .then(res=> {
                 console.log(res.data)
                 //this.setSetSate({uploadFileId : res.data})
@@ -520,7 +518,7 @@ export default class BusinessEdit extends Component {
                                 {this.state.uploadFileName}
                             </label>
                         </div>
-                        <div className='row btn-block'>
+                        <div className='row'>
                             <a href="#" className='p-1 btn btn-primary ml-2 mt-5' onClick={this.handleUpload}>
                                 Upload
                             </a>
@@ -537,7 +535,7 @@ export default class BusinessEdit extends Component {
                     {this.state.uploadFileId ? (
                         <div className='row mt-5'>
                             <div className='col-md-6 m-auto'>
-                                <img src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
+                                <img src={'http://localhost:5000/sa/api/image/' + this.state.uploadFileId} alt='' />
                             </div>
                         </div>
                     )  : null } 

@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
+const path = require('path');
 
 
 require('dotenv').config();
@@ -15,10 +16,10 @@ app.use(fileUpload());
 
 const uri = process.env.ATLAS_URI;
 console.log(uri);
-mongoose.connect(uri, { useNewUrlParser:true, useCreateIndex: true });
-// .catch(err => {
-//     console.error('App starting error:', err.stack);
-// });
+mongoose.connect(uri, { useNewUrlParser:true, useCreateIndex: true })
+ .catch(err => {
+     console.error('App starting error:', err.stack);
+ });
 
 
 const connection = mongoose.connection;
@@ -29,8 +30,17 @@ connection.once('open', () => {
 const businessRouter  = require('./routes/business');
 const imageRouter  = require('./routes/Image');
 
-app.use('/business', businessRouter);
-app.use('/image', imageRouter);
+app.use('/sa/api/business', businessRouter);
+app.use('/sa/api/image', imageRouter);
+
+// Serve static assets in production
+if(process.env.NODE_ENG === 'production') {
+    // Set static folder
+    app.use(express.static('/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    });
+}
 
 app.listen(port, () => {
     console.log('Server is running on port ' + port);
