@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "run-p dev:**",
     "dev:server": "nodemon server.js",
-    "dev:app": "cd client && npm start",
-    "build:app": "cd client && npm build",
+    "dev:app": "cd sa && npm start",
+    "build:app": "cd sa && npm build",
     "start": "node server.js",
     "heroku-postbuild": "cd sa && npm install && npm run build"
   },
