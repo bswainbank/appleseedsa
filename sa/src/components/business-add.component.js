@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './css/business-edit.components.css';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImages, faImage } from '@fortawesome/free-solid-svg-icons'
 
 export default class BusinessAdd extends Component {
     constructor(props) {
@@ -307,7 +305,7 @@ export default class BusinessAdd extends Component {
         const formData = new FormData();
         formData.append('file', this.state.uploadFile);
 
-        axios.post('http://localhost:5000/sa/api/image/upload', formData, {
+        axios.post('/image/upload', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             },
@@ -383,7 +381,7 @@ export default class BusinessAdd extends Component {
     
         console.log(business);
 
-        axios.post('http://localhost:5000/sa/api/business/add/', business)
+        axios.post('/business/add/', business)
             .then(res=> {
                 console.log(res.data)
                 window.location = '/edit/' + business.pageId;
@@ -391,7 +389,7 @@ export default class BusinessAdd extends Component {
             .catch((error) => {
                 console.log("ERR" + error.response.data);
                 this.setState({errorMessage : error.response.data});
-                window.location = '../home';
+                window.location = '/';
             });
 
     }
@@ -458,7 +456,7 @@ export default class BusinessAdd extends Component {
                                 {this.state.uploadFileName}
                             </label>
                         </div>
-                        <div className='row mt-1'>
+                        <div className='row mt-3'>
                             <a href="#" className='p-1 btn btn-primary ml-2 mt-5' onClick={this.handleUpload}>
                                 Upload
                             </a>
@@ -474,7 +472,7 @@ export default class BusinessAdd extends Component {
                     {this.state.uploadFileId ? (
                         <div className='row mt-5'>
                             <div className='col-md-6 m-auto'>
-                                <img src={'http://localhost:5000/sa/api/image/' + this.state.uploadFileId} alt='' />
+                                <img src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
                             </div>
                         </div>
                     )  : null } 

@@ -86,8 +86,7 @@ export default class BusinessEdit extends Component {
 
 
     componentDidMount() {
-
-        axios.get('http://localhost:5000/sa/api/business/load/' + this.props.match.params.pageId)
+        axios.get('/business/load/' + this.props.match.params.pageId)
             .then(response => {
                console.log(response.data);
 
@@ -133,7 +132,7 @@ export default class BusinessEdit extends Component {
             })
             .catch((error) => {
                 console.log(error);
-                window.location = '/home/';
+                window.location = '/';
             })
     }
 
@@ -353,7 +352,7 @@ export default class BusinessEdit extends Component {
         const formData = new FormData();
         formData.append('file', this.state.uploadFile);
 
-        axios.post('http://localhost:5000/sa/api/image/upload', formData, {
+        axios.post('/image/upload', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             },
@@ -429,7 +428,7 @@ export default class BusinessEdit extends Component {
     
         console.log(business);
 
-        axios.post('http://localhost:5000/sa/api/business/update/' + this.state.id, business)
+        axios.post('/business/update/' + this.state.id, business)
             .then(res=> {
                 console.log(res.data)
                 //this.setSetSate({uploadFileId : res.data})
@@ -443,7 +442,9 @@ export default class BusinessEdit extends Component {
     }
 
     render() {
+       
         return (
+            
         <div className = 'container-edit'>
 
             <div className = 'container'>
@@ -535,7 +536,7 @@ export default class BusinessEdit extends Component {
                     {this.state.uploadFileId ? (
                         <div className='row mt-5'>
                             <div className='col-md-6 m-auto'>
-                                <img src={'http://localhost:5000/sa/api/image/' + this.state.uploadFileId} alt='' />
+                                <img src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
                             </div>
                         </div>
                     )  : null } 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,7 +15,8 @@ function App() {
         <div className="container-fluid">
           <Route path="/view/:pageId" component= {BusinessView} />
           <Route path="/add" component= {BusinessAdd} />
-          <Route path="/edit/:pageId" component= {BusinessEdit} />      
+          {/*<Route path="/edit" render ={(props) =>< BusinessEdit {...props}/>} />  */}                     
+          <Route path = '/edit/:pageId' component = {BusinessEdit} />
           <Route exact path="/" component= {Home} />
         </div>
       </Switch>

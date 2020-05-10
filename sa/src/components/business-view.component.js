@@ -12,7 +12,7 @@ const Business = props => (
             {props.business.info.images.top ? (
                         <div className='row mt-5'>
                             <div className='col-md-6 m-auto'>
-                                <img className="img-responsive" src={'http://localhost:5000/sa/api/image/' + props.business.info.images.top} alt='' />
+                                <img className="img-responsive" src={'/image/' + props.business.info.images.top} alt='' />
                             </div>
                         </div>
             )  : null } 
@@ -234,7 +234,7 @@ export default class BusinessView extends Component {
 
     componentDidMount() {
         
-        axios.get('http://localhost:5000/sa/api/business/' + this.props.match.params.pageId)
+        axios.get('/business/' + this.props.match.params.pageId)
             .then(response => {
                this.setState({ business: response.data});
                
