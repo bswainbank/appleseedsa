@@ -28,7 +28,8 @@ app.use('/image', imageRouter);
     });
 //}
   
-const uri = process.env.HEROKU_URI||process.env.ATLAS_URI;
+//const uri = process.env.HEROKU_URI||process.env.ATLAS_URI;
+const uri = process.env.ATLAS_URI;
 console.log(uri);
 mongoose.connect(uri, { useNewUrlParser:true, useCreateIndex: true });
 // .catch(err => {

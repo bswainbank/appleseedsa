@@ -94,7 +94,7 @@ router.route('/load/:pageId').get((req, res) => {
             const loggedInUser =  storage.getItem("user");  
             console.log(loggedInUser);
             console.log(business.username);
-            if(!(loggedInUser === business.username)) {
+            if(!(loggedInUser === business.username || loggedInUser==='appleseed')) {
                 res.status(403).json("Login required");
             } else {
                 res.json(business) 

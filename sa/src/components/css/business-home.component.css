@@ -26,11 +26,11 @@
     border-radius: 25px;
     position: relative;
     top: 50%;
-    transform: translateY(25%);
+    transform: translateY(12%);
 	text-align:center;
     width:35%;
 	right:0;left:0;
-    margin-left: 65%;
+    margin-left: 63%;
     background-color: white;
     padding: 20px;
 }
@@ -45,7 +45,7 @@
     width:30%;
 	right:0;left:0;
     margin-left: 10%;
-    height:100px;
+    height:130px;
     background-color: white;
 }
 

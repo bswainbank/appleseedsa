@@ -32,9 +32,17 @@ export default class Home extends Component {
                        Sample Sites
                     </h3>
 
-                    <Link to="edit/diversionspgports">
-                        Diversions
-                    </Link>
+                    <h6>
+                        <Link to="view/diversionspgports">
+                            Diversions Puzzles and Games
+                        </Link>
+                    </h6>
+
+                    <h6>
+                        <Link to="view/appleseed">
+                            Appleseed Initiative
+                        </Link>
+                    </h6>
                 </div>
 
             </div>

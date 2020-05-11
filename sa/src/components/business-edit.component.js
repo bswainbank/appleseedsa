@@ -472,7 +472,7 @@ export default class BusinessEdit extends Component {
                    
                     <div className = 'mt-5 link-group'>
                         <div className="l1"> View and test your page:</div><br></br>
-                        <a className="site-link" href={"http://localhost:3000/view/" + this.state.pageId}>{"http://localhost:3000/view/" + this.state.pageId}</a>
+                        <a className="site-link" href={"https://appleseedinit.org/view/" + this.state.pageId}>{"https://appleseedinit.org/view/" + this.state.pageId}</a>
                         <div>
                         <span className="help-block text-muted">Share this URL so people can reach your page. You can also use it to test and view the page.</span>
                         </div>
