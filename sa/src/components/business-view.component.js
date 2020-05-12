@@ -241,6 +241,7 @@ export default class BusinessView extends Component {
             })
             .catch((error) => {
                 console.log(error);
+                window.location = '/';
             })
 
            

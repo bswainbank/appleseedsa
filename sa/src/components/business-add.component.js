@@ -314,8 +314,8 @@ export default class BusinessAdd extends Component {
             this.setState({uploadFileId: res.data});
         })
         .catch((error) => {
-            console.log("ERR" + error.res.data);
-            this.setState({errorMessage : error.res.data});
+            console.log(error);
+            this.setState({errorMessage : "Error uploading image"});
         });
     
     };
@@ -389,7 +389,7 @@ export default class BusinessAdd extends Component {
             .catch((error) => {
                 console.log("ERR" + error.response.data);
                 this.setState({errorMessage : error.response.data});
-                window.location = '/';
+                //window.location = '/';
             });
 
     }
@@ -400,13 +400,15 @@ export default class BusinessAdd extends Component {
 
             <div className = 'container'>
                 <h3>Create Your Business Page</h3>
-                <span className="help-block text-muted">Page Id, username, and password are required and must be unique. 
-                The rest of the elements are optional. Fill in the values that are relevant to you. Save the changes.
-                </span>
+                
 
                 { this.state.errorMessage &&
-                    <h3 className="error"> { this.state.errorMessage } </h3> }
+                    <div className="error alert-danger"> { this.state.errorMessage } </div> }
                     
+                <span className="help-block text-muted">Page Id, username, and password are required and must be unique. 
+                The rest of the elements are optional. Fill in the values that are relevant to you. Save the changes.
+                </span>  
+
                 <form onSubmit={this.onSubmit}>
                     
                     <div className="mt-4 form-group">

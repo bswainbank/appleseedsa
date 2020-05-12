@@ -361,8 +361,8 @@ export default class BusinessEdit extends Component {
             this.setState({uploadFileId: res.data});
         })
         .catch((error) => {
-            console.log("ERR" + error.res.data);
-            this.setState({errorMessage : error.res.data});
+            console.log(error);
+            this.setState({errorMessage : "Error uploading image"});
         });
     
     };
@@ -436,7 +436,6 @@ export default class BusinessEdit extends Component {
             .catch((error) => {
                 console.log("ERR" + error.response.data);
                 this.setState({errorMessage : error.response.data});
-                window.location = '../home';
             });
 
     }
@@ -449,12 +448,13 @@ export default class BusinessEdit extends Component {
 
             <div className = 'container'>
                 <h3>Update Your Business Page</h3>
+
+                { this.state.errorMessage &&
+                    <div className="error alert-danger"> { this.state.errorMessage } </div> }
+
                 <span className="help-block text-muted">Page Id, username, and password are required and must be unique. 
                 The rest of the elements are optional. Fill in the values that are relevant to you. Save the changes.
                 Then look at the results on your Site Assitant Page</span>
-
-                { this.state.errorMessage &&
-                    <h3 className="error"> { this.state.errorMessage } </h3> }
                     
                 <form onSubmit={this.onSubmit}>
                     
@@ -472,7 +472,7 @@ export default class BusinessEdit extends Component {
                    
                     <div className = 'mt-5 link-group'>
                         <div className="l1"> View and test your page:</div><br></br>
-                        <a className="site-link" href={"https://appleseedinit.org/view/" + this.state.pageId}>{"https://appleseedinit.org/view/" + this.state.pageId}</a>
+                        <a className="site-link" href={"https://www.appleseedinit.org/view/" + this.state.pageId}>{"https://www.appleseedinit.org/view/" + this.state.pageId}</a>
                         <div>
                         <span className="help-block text-muted">Share this URL so people can reach your page. You can also use it to test and view the page.</span>
                         </div>
