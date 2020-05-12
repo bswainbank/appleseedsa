@@ -85,3 +85,7 @@
 .texta {
     white-space: pre-wrap;
 }
+
+.topImage {
+    align-self:center;
+}

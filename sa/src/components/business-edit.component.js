@@ -535,8 +535,8 @@ export default class BusinessEdit extends Component {
 
                     {this.state.uploadFileId ? (
                         <div className='row mt-5'>
-                            <div className='col-md-6 m-auto'>
-                                <img src={'http://localhost:5000/image/' + this.state.uploadFileId} alt='' />
+                            <div className='m-auto'>
+                                <img src={'/image/' + this.state.uploadFileId} alt='' />
                             </div>
                         </div>
                     )  : null } 

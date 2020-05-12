@@ -11,7 +11,7 @@ const Business = props => (
         <div>
             {props.business.info.images.top ? (
                         <div className='row mt-5'>
-                            <div className='col-md-6 m-auto'>
+                            <div className='m-auto'>
                                 <img className="img-responsive" src={'/image/' + props.business.info.images.top} alt='' />
                             </div>
                         </div>
